@@ -71,3 +71,4 @@ python3 scripts/package-source.py
 本版本随附 GPL-2.0 许可。XTrackCAD 参数来自 Dwyane Ward、Dave Bullis 及其他贡献者；原始文件保留，转换日期为 2026-09-26。详见 `THIRD_PARTY_NOTICES.md` 与 `LICENSE`。源代码可从应用目录说明中下载。
 
 TOMIX、KATO、Fine Track、UNITRACK、UNITRAM 商标归各自权利人所有。本项目与厂商无隶属或认证关系。
+# RailStudio
