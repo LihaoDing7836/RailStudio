@@ -1,0 +1,49 @@
+/** Geometry uses millimetres and clockwise degrees in screen coordinates. */
+export const rad = d => d * Math.PI / 180;
+export const norm = a => ((a % 360) + 360) % 360;
+export const angleDiff = (a,b) => Math.abs(((a-b+540)%360)-180);
+export function transform(p, piece) {const a=rad(piece.angle||0), f=piece.flip||1;return {x:piece.x+p.x*Math.cos(a)-p.y*f*Math.sin(a),y:piece.y+p.x*Math.sin(a)+p.y*f*Math.cos(a),angle:norm((p.angle||0)*f+(piece.angle||0))};}
+export function line(length,x=0,y=0,angle=0){const a=rad(angle);return {points:[{x,y},{x:x+length*Math.cos(a),y:y+length*Math.sin(a)}],start:{x,y,angle:norm(angle+180)},end:{x:x+length*Math.cos(a),y:y+length*Math.sin(a),angle:norm(angle)},length};}
+export function arc(radius,degrees,x=0,y=0,heading=0){const n=Math.max(12,Math.ceil(Math.abs(degrees)/2)),a=rad(degrees),sign=Math.sign(degrees)||1;const points=Array.from({length:n+1},(_,i)=>{const t=Math.abs(a)*i/n;return transform({x:radius*Math.sin(t),y:sign*radius*(1-Math.cos(t))},{x,y,angle:heading});});return {points,start:{x,y,angle:norm(heading+180)},end:{...points.at(-1),angle:norm(heading+degrees)},length:radius*Math.abs(a)};}
+export function geometry(part, piece={}) {
+ const g={...part.geometry};if(g.type==='custom')return {paths:g.paths,endpoints:g.endpoints,length:g.paths.reduce((n,p)=>n+p.length,0)};if(!g.type)return {paths:[],endpoints:[],length:0};
+ const L=piece.length??g.length??0,R=g.radius||0,A=g.angle||0,S=g.spacing||0;
+ let paths=[];
+ if(g.type==='straight'||g.type==='buffer')paths=[line(L)];
+ if(g.type==='flex')paths=[Math.abs(piece.bend||0)>.001?arc(L/Math.abs(rad(piece.bend)),piece.bend):line(L)];
+ if(g.type==='doubleCrossing')paths=[line(L),line(L,0,S),line(L,(L-S)/2,-(L-S)/2,90),line(L,(L+S)/2,-(L-S)/2,90)];
+ if(g.type==='transition'){const delta=g.endSpacing-S,points=Array.from({length:41},(_,i)=>{const t=i/40;return {x:t*L,y:S+delta*(3*t*t-2*t*t*t)};});paths=[line(L),{points,start:{x:0,y:S,angle:180},end:{x:L,y:g.endSpacing,angle:0},length:points.slice(1).reduce((v,p,i)=>v+Math.hypot(p.x-points[i].x,p.y-points[i].y),0)}];}
+ if(g.type==='curve')paths=[arc(R,A)];
+ if(g.type==='doubleStraight')paths=[line(L),line(L,0,S)];
+ if(g.type==='doubleCurve')paths=[arc(R,A),arc(R-S,A,0,S)];
+ if(g.type==='turnout')paths=[line(L),arc(R,A*(g.hand==='left'?-1:1))];
+ if(g.type==='wye')paths=[arc(R,A),arc(R,-A)];
+ if(g.type==='crossing'){const half=rad(A/2),len=L/2;paths=[line(L),line(L,L/2-len*Math.cos(rad(A)),-len*Math.sin(rad(A)),A)];}
+ if(g.type==='crossover'){paths=[line(L),line(L,0,S),{points:[{x:0,y:0},{x:L,y:S}],start:{x:0,y:0,angle:180},end:{x:L,y:S,angle:0},length:Math.hypot(L,S)}];if(g.double)paths.push({points:[{x:0,y:S},{x:L,y:0}],start:{x:0,y:S,angle:180},end:{x:L,y:0,angle:0},length:Math.hypot(L,S)});}
+ if(g.type==='turntable'){
+  const c=g.center,heading=piece.tableAngle||0,a=rad(heading);paths=[line(L,c.x-L/2*Math.cos(a),c.y-L/2*Math.sin(a),heading)];
+  for(const e of g.ports){const d=Math.hypot(e.x-c.x,e.y-c.y),angle=Math.atan2(e.y-c.y,e.x-c.x);if(d>L/2+.1)paths.push(line(d-L/2,c.x+L/2*Math.cos(angle),c.y+L/2*Math.sin(angle),angle*180/Math.PI));}
+  return {paths,endpoints:g.ports,length:L};
+ }
+ if(g.type==='safety'){const straight=line(L),branch=arc(R,A*(g.hand==='left'?-1:1));paths=g.live==='straight'?[straight]:[branch];}
+ const endpoints=[];for(const path of paths)for(const e of [path.start,path.end]){if(!endpoints.some(q=>Math.hypot(q.x-e.x,q.y-e.y)<.001&&angleDiff(q.angle,e.angle)<.001))endpoints.push(e);}
+ if(g.type==='buffer')endpoints.splice(1);
+ return {paths,endpoints,length:paths.reduce((n,p)=>n+p.length,0)};
+}
+export const pathData=points=>points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ');
+export function worldGeometry(part,piece){const g=geometry(part,piece);return {...g,paths:g.paths.map(p=>({...p,points:p.points.map(q=>transform(q,piece))})),endpoints:g.endpoints.map((e,i)=>({...transform(e,piece),z:g.paths.some(p=>Math.hypot(p.start.x-e.x,p.start.y-e.y)<.001)?(piece.z||0):(piece.zEnd??piece.z??0),pieceId:piece.id,index:i,brand:part.brand,scale:part.scale,connector:part.geometry.type==='flex'?'bare':'standard'}))};}
+export function compatible(a,b){return a.brand===b.brand&&a.scale===b.scale&&(a.connector||'standard')===(b.connector||'standard')&&Math.abs((a.z||0)-(b.z||0))<.5;}
+export function connections(pieces,byId,tolerance=.6){
+ const endpoints=pieces.flatMap(p=>worldGeometry(byId[p.partId],p).endpoints),connected=new Set(),pairs=[],grid=new Map();
+ for(let i=0;i<endpoints.length;i++){const a=endpoints[i],gx=Math.floor(a.x/tolerance),gy=Math.floor(a.y/tolerance);let match=-1;
+  for(let dx=-1;dx<=1&&match<0;dx++)for(let dy=-1;dy<=1&&match<0;dy++)for(const j of grid.get(`${gx+dx},${gy+dy}`)||[]){const b=endpoints[j];if(a.pieceId!==b.pieceId&&!connected.has(j)&&compatible(a,b)&&Math.hypot(a.x-b.x,a.y-b.y)<=tolerance&&angleDiff(a.angle,b.angle+180)<.6){match=j;break;}}
+  if(match>=0){connected.add(i);connected.add(match);pairs.push([a,endpoints[match]]);}const key=`${gx},${gy}`;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(i);
+ }return {endpoints,pairs,open:endpoints.filter((_,i)=>!connected.has(i))};}
+export function snapToEndpoint(part,piece,localIndex,target){const e=geometry(part,piece).endpoints[localIndex];if(!e)return piece;const angle=norm(target.angle+180-e.angle*(piece.flip||1));const off=transform(e,{x:0,y:0,angle,flip:piece.flip||1});return {...piece,x:target.x-off.x,y:target.y-off.y,angle,z:target.z||0,zEnd:target.z||0};}
+export function nearestSnap(part,piece,targets,threshold){let best=null;const g=worldGeometry(part,piece);for(let i=0;i<g.endpoints.length;i++)for(const target of targets){if(!compatible(g.endpoints[i],target)||target.pieceId===piece.id)continue;const d=Math.hypot(g.endpoints[i].x-target.x,g.endpoints[i].y-target.y);if(d<threshold&&(!best||d<best.distance))best={piece:snapToEndpoint(part,piece,i,target),target,distance:d};}return best;}
+export function bounds(pieces,byId){const points=pieces.flatMap(p=>worldGeometry(byId[p.partId],p).paths.flatMap(q=>q.points));if(!points.length)return null;return {minX:Math.min(...points.map(p=>p.x)),minY:Math.min(...points.map(p=>p.y)),maxX:Math.max(...points.map(p=>p.x)),maxY:Math.max(...points.map(p=>p.y))};}
+export function validateProject(raw,byId){if(!raw||raw.version!==1||typeof raw.name!=='string'||raw.name.length>160||!raw.board||!Array.isArray(raw.pieces)||raw.pieces.length>5000)throw Error('文件不是有效的 Rail Studio 方案，或超过 5000 段轨道。');const finite=(n,lo,hi)=>typeof n==='number'&&Number.isFinite(n)&&n>=lo&&n<=hi;if(!finite(raw.board.width,100,50000)||!finite(raw.board.height,100,50000))throw Error('沙盘尺寸必须在 100–50000 mm 之间。');const ids=new Set();for(const p of raw.pieces){const part=byId[p.partId];if(!part?.geometry?.type)throw Error(`轨道库不支持型号：${String(p.partId).slice(0,80)}`);if(typeof p.id!=='string'||ids.has(p.id))throw Error('零件编号重复或无效。');ids.add(p.id);if(!finite(p.x,-100000,100000)||!finite(p.y,-100000,100000)||!finite(p.angle,-36000,36000)||![1,-1].includes(p.flip))throw Error('轨道位置或角度无效。');for(const k of ['z','zEnd'])if(p[k]!==undefined&&!finite(p[k],-10000,10000))throw Error('轨道高度无效。');if(p.tableAngle!==undefined&&(part.geometry.type!=='turntable'||!finite(p.tableAngle,-36000,36000)))throw Error('转盘角度无效');if(p.bend!==undefined&&(part.geometry.type!=='flex'||!finite(p.bend,-180,180)))throw Error('柔性轨角度超出范围');if(p.length!==undefined){if(!part.geometry.minLength||!finite(p.length,part.geometry.minLength,part.geometry.maxLength))throw Error('可变轨道长度超出产品范围。');}}
+ return {version:1,name:raw.name,board:{width:raw.board.width,height:raw.board.height},pieces:raw.pieces.map(p=>({id:p.id,partId:p.partId,x:p.x,y:p.y,angle:p.angle,flip:p.flip,z:p.z||0,zEnd:p.zEnd??p.z??0,...(p.length===undefined?{}:{length:p.length}),...(p.bend===undefined?{}:{bend:p.bend}),...(p.tableAngle===undefined?{}:{tableAngle:p.tableAngle})}))};}
+export function billOfMaterials(pieces,byId){const map=new Map();for(const p of pieces){const part=byId[p.partId];const key=part.brand+'|'+part.sku;if(!map.has(key))map.set(key,{brand:part.brand,sku:part.sku,name:part.name,scale:part.scale,count:0,pack:part.pack||null,source:part.source});map.get(key).count++;}return [...map.values()].sort((a,b)=>a.brand.localeCompare(b.brand)||a.sku.localeCompare(b.sku));}
+export function demoProject(byId){const pieces=[];let count=0;const find=(sku)=>Object.values(byId).find(p=>p.brand==='KATO'&&p.scale==='N'&&p.sku===sku);for(const [sku,y] of [['20-132',150],['20-120',183]]){let cursor={x:550,y,angle:0};for(const code of ['20-000','20-000',sku,sku,sku,sku,'20-000','20-000',sku,sku,sku,sku]){const part=find(code);if(!part)continue;const piece={id:'demo-'+(++count),partId:part.id,x:cursor.x,y:cursor.y,angle:cursor.angle,flip:1,z:0,zEnd:0};pieces.push(piece);cursor=worldGeometry(part,piece).endpoints[1];}}
+ return {version:1,name:'双环线 · KATO N 轨',board:{width:1800,height:1000},pieces};}
