@@ -7,6 +7,6 @@ with zipfile.ZipFile(root/'dist/rail-studio-source.zip','w',zipfile.ZIP_DEFLATED
  for folder in ['dist','scripts','tests','vendor']:
   for p in (root/folder).rglob('*'):
    if p.is_file() and p.suffix!='.zip' and '__pycache__' not in p.parts:z.write(p,Path('rail-studio')/p.relative_to(root))
- for name in ['README.md','LICENSE','THIRD_PARTY_NOTICES.md','package.json']:
+ for name in ['README.md','BRAND.md','LICENSE','THIRD_PARTY_NOTICES.md','package.json']:
   z.write(root/name,Path('rail-studio')/name)
 print('Packaged source:',(root/'dist/rail-studio-source.zip').stat().st_size,'bytes')

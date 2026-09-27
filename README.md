@@ -1,6 +1,8 @@
-# Rail Studio · 轨道设计室
+# 枕星 · 轨道设计
 
 中文铁路模型沙盘规划器。无运行时第三方依赖，使用 SVG 与原生 JavaScript；以模型实际毫米尺寸工作。
+
+品牌名：枕星 / ZHENXING RAIL。新图形标志位于 `dist/brand/zhenxing-mark.png`，设计说明见 `BRAND.md`。保留 RailStudio 的存储键与方案格式，旧方案可继续使用。
 
 ## 启动
 
