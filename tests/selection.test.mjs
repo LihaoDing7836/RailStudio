@@ -17,7 +17,7 @@ function editor(){
   if(!elements.has(key))elements.set(key,{events:new Map(),style:{},value:'50',checked:false,open:false,
    addEventListener(name,fn){this.events.set(name,fn);},focus(){},
    setPointerCapture(id){captures.add(id);},hasPointerCapture(id){return captures.has(id);},releasePointerCapture(id){captures.delete(id);},
-   getBoundingClientRect:()=>({width:1000,height:600}),
+   clientWidth:1000,getBoundingClientRect:()=>({width:1000,height:600}),
    createSVGPoint(){return {x:0,y:0,matrixTransform(){return {x:this.x*2+10,y:this.y*2+20};}};},
    getScreenCTM:()=>({inverse:()=>({})}),classList:{toggle(){}}});
   return elements.get(key);
@@ -36,12 +36,30 @@ function editor(){
  context.editor.init({version:1,name:'Test',board:{width:1800,height:1000},pieces:[piece('a',50,80),piece('b',50,180),piece('c',600,80)]},byId);
  const empty={closest:()=>null,matches:()=>false};
  return {state:()=>context.editor.state(),select:ids=>context.editor.select(ids),captures,
-  pointer(name,x,y,options={}){const {id,...rest}=options;const target=id?{closest:s=>s==='[data-piece]'?{dataset:{piece:id}}:null}:empty;
+  pointer(name,x,y,options={}){const {id,handle,...rest}=options;const target=handle?{closest:s=>s==='[data-rotate-handle]'?{}:null}:id?{closest:s=>s==='[data-piece]'?{dataset:{piece:id}}:null}:empty;
    element('#canvas').events.get(name)({clientX:x,clientY:y,pointerId:1,button:0,isPrimary:true,shiftKey:false,preventDefault(){},target,...rest});},
   key(key,options={}){windowEvents.get('keydown')({key,code:key,preventDefault(){},target:empty,...options});},
   blur(){windowEvents.get('blur')();}};
 }
 const ids=e=>Array.from(e.state().selected).sort();
+test('rotation handle rotates a group freely, supports undo and cancellation',()=>{
+ const e=editor();e.select(['a','b']);const before=JSON.stringify(e.state().project);
+ e.pointer('pointerdown',60,10,{handle:true});e.pointer('pointermove',133,10);e.pointer('pointerup',133,10);
+ assert.equal(e.state().project.pieces[0].angle,36.5);
+ assert.equal(e.state().project.pieces[1].angle,36.5);
+ assert.ok(Math.abs(Math.hypot(e.state().project.pieces[0].x-e.state().project.pieces[1].x,e.state().project.pieces[0].y-e.state().project.pieces[1].y)-100)<1e-8);
+ assert.equal(e.state().history.length,1);e.key('z',{ctrlKey:true});assert.equal(JSON.stringify(e.state().project),before);
+ e.select(['a']);e.pointer('pointerdown',60,10,{handle:true});e.pointer('pointermove',200,10);e.key('Escape');assert.equal(JSON.stringify(e.state().project),before);
+});
+test('group snap preserves internal connections, slopes and compatibility',()=>{
+ const group=[piece('a',0,0),piece('b',248,0)],target={...piece('target',510,5),angle:35};
+ const snapped=selection.snapGroup(group,byId,geometry.connections([target],byId).open,30);
+ assert.ok(snapped);assert.equal(geometry.connections([...snapped,target],byId).pairs.length,2);
+ assert.equal(selection.snapGroup(group,byId,geometry.connections([{...target,z:20,zEnd:20}],byId).open,30),null);
+ const slope=[{...group[0],z:0,zEnd:2},{...group[1],z:2,zEnd:4}];
+ const result=selection.snapGroup(slope,byId,geometry.connections([{...target,z:4.2,zEnd:4.2}],byId).open,30);
+ assert.ok(result);assert.ok(Math.abs(result[0].zEnd-result[0].z-2)<1e-8);assert.equal(geometry.connections(result,byId).pairs.length,1);
+});
 function box(e,options={}){e.pointer('pointerdown',0,0,options);e.pointer('pointermove',150,100,options);e.pointer('pointerup',150,100,options);}
 
 test('dragging a blank area selects complete tracks in transformed canvas coordinates',()=>{
