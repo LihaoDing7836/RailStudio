@@ -1,4 +1,4 @@
-import {bounds,connections,compatible,norm,rad} from './geometry.js?v=0a42dd42ad0934d2';
+import {bounds,connections,compatible,norm,rad} from './geometry.js?v=31c9146beea80247';
 
 export function selectionCenter(pieces,byId){const b=bounds(pieces,byId);return b?{x:(b.minX+b.maxX)/2,y:(b.minY+b.maxY)/2}:null;}
 export function rotatePieces(pieces,center,degrees){

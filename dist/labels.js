@@ -1,4 +1,4 @@
-import {worldGeometry} from './geometry.js?v=0a42dd42ad0934d2';
+import {worldGeometry} from './geometry.js?v=31c9146beea80247';
 
 const number=n=>Number(n.toFixed(1)).toString();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
