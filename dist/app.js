@@ -1,8 +1,8 @@
-import {boardOutline,boardPath,boardPreset,validateOutline,containsSegment} from './board.js?v=31c9146beea80247';
-import {buildingMarkup,buildingSize} from './buildings.js?v=31c9146beea80247';
-import {geometry,worldGeometry,pathData,connections,nearestSnap,snapToEndpoint,norm,bounds,validateProject,billOfMaterials,demoProject,rad,transform} from './geometry.js?v=31c9146beea80247';
-import {selectionRect,boxedSelection,selectionCenter,rotatePieces,snapGroup} from './selection.js?v=31c9146beea80247';
-import {trackLabelsMarkup} from './labels.js?v=31c9146beea80247';
+import {boardOutline,boardPath,boardPreset,validateOutline,containsSegment} from './board.js?v=39da0e8f64deb6e6';
+import {buildingMarkup,buildingSize} from './buildings.js?v=39da0e8f64deb6e6';
+import {geometry,worldGeometry,pathData,connections,nearestSnap,snapToEndpoint,norm,bounds,validateProject,billOfMaterials,demoProject,rad,transform} from './geometry.js?v=39da0e8f64deb6e6';
+import {selectionRect,boxedSelection,selectionCenter,rotatePieces,snapGroup} from './selection.js?v=39da0e8f64deb6e6';
+import {trackLabelsMarkup} from './labels.js?v=39da0e8f64deb6e6';
 const $=s=>document.querySelector(s), $$=s=>[...document.querySelectorAll(s)], esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const STORAGE_KEY=new URLSearchParams(location.search).has('qa')?'rail-studio-qa-v1':'rail-studio-project-v1';
 let catalog,byId,project,buildingCatalog={parts:[]},elementType='track';const selected=new Set();let brand='KATO',scale='N',category='直轨',placing=null,tool='select',history=[],future=[],view={x:-150,y:-150,w:2100,h:1300},pointer={x:800,y:400},ghost=null,gesture=null,space=false,cache=null,toastTimer,saveTimer;

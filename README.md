@@ -100,3 +100,13 @@ TOMIX、KATO、Fine Track、UNITRACK、UNITRAM 商标归各自权利人所有。
 「构建元素 → 建筑」提供 TOMIX、TOMYTEC、KATO 官网可检索建筑及车站设施，支持分类和编号搜索。`dist/data/buildings.json` 保存来源和明确的模型尺寸。官网缺少完整尺寸或同页多个建筑尺寸无法可靠对应时，放置前必须手动输入宽深；不会推测。建筑尺寸随方案保存，后续目录更新不会改变已放置建筑大小。俯视外观为分类拟真示意，并非逐产品精细 3D 模型；目录和属性栏显示官方照片。套装的占地文字需按官方内容复核。
 
 更新目录：`python3 scripts/sync-buildings.py`；加 `--refresh` 可重新抓取官网。脚本包含旧官网、当前 TOMYTEC 公开目录和 KATO/TOMIX 产品列表，不宣称历史全量。部分官方失效链接保留目录条目和待确认状态。官方照片保存在 `building-images` / `train-images`，来源记录在 JSON。完成后执行 `npm run build` 并部署整个 `dist`，包括新增模块、建筑 JSON、图片文件夹。
+
+## 网站点击量（服务器累计 PV）
+
+页脚显示全站累计页面访问次数，首页、图鉴、详情、预告和沙盘设计均计数。每次加载文档计一次，刷新会计数；页面内筛选、点击按钮、切换浏览器标签不计数。不是独立访客人数；自动化访问也可能计入。本地 localhost 预览不发送统计请求。没有 Cookie 或访客身份追踪，不保存 IP。统计从启用后开始，无法恢复此前访问量。
+
+Windows IIS 首次启用：先部署完整 `dist`，再在管理员 PowerShell 中运行仓库的 `scripts/enable-visit-counter.ps1`（可用 `-SiteName` 指定网站，默认 `Default Web Site`）。脚本安装 ASP.NET 4.x IIS 功能、建立专用应用池，并设置读写权限。之后正常更新静态网站即可，不必反复执行初始化。
+
+接口为 `dist/api/visits.ashx`，只接受同源 POST。累计数和近期请求 ID 存在 `%ProgramData%\ZhenxingRail\Statistics\visits.txt`，不在网站目录或 Git 中，替换发布文件夹不会重置。并发请求通过独占文件锁串行更新，采用原子替换并保留上一版备份；近期重复请求 ID 不重复计数。不要删除此数据目录；迁移服务器时一并备份恢复。此方案为单服务器共享计数，不提供反作弊或多服务器汇总。
+
+正式网站接口尚未启用或故障时显示「暂不可用」，不会伪造数字；本地显示「本地预览不计数」。Mac 本地预览无法验证 Windows ASP.NET 运行环境，需部署后查看响应。

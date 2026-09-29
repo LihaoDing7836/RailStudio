@@ -1,4 +1,4 @@
-import {validateOutline} from './board.js?v=31c9146beea80247';
+import {validateOutline} from './board.js?v=39da0e8f64deb6e6';
 /** Geometry uses millimetres and clockwise degrees in screen coordinates. */
 export const rad = d => d * Math.PI / 180;
 export const norm = a => ((a % 360) + 360) % 360;

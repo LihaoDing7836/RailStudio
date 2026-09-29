@@ -22,3 +22,5 @@
 .photo-thumbnails .photo-frame{height:55px}.photo-thumbnails .photo-fallback{font-size:8px;padding:2px}
 .image-credit{font-size:10px;line-height:1.8;color:var(--muted);margin:12px 0 0}.image-credit a{text-decoration:underline;text-underline-offset:3px}
 @media(max-width:760px){.train-visual,.train-visual.kato{height:145px;padding:10px 10px 20px}.train-visual .photo-frame{height:100px;margin-top:2px}.detail-photo-main .photo-frame{height:255px}.detail-photo-main{padding:8px}.photo-fallback{font-size:10px}.visual-caption{font-size:7px}.photo-thumbnails button{flex-basis:74px}}
+
+.visit-counter{display:block;font-size:10px;line-height:1.7;opacity:.75;margin-top:5px;font-variant-numeric:tabular-nums}
