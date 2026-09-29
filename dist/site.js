@@ -1,4 +1,4 @@
-import { PAGE_SIZE, filterTrains, stateFromQuery, queryFromState, escapeHTML as e } from './train-catalogue.js';
+import { PAGE_SIZE, filterTrains, stateFromQuery, queryFromState, escapeHTML as e } from './train-catalogue.js?v=f9797840556483bd';
 const page=document.body.dataset.page;
 const $=selector=>document.querySelector(selector);
 $('[data-header]').innerHTML=`<a class="site-brand" href="./" aria-label="枕星 Train 首页"><img src="brand/zhenxing-mark.png" width="43" height="43" alt=""><span><span class="brand-title">枕星<em>Train</em></span><span class="brand-subtitle">A WORLD IN MINIATURE</span></span></a><nav class="site-nav" aria-label="主导航"><a href="./" ${page==='home'?'aria-current="page"':''}>首页</a><a href="trains.html" ${['trains','detail'].includes(page)?'aria-current="page"':''}>列车图鉴</a><a href="designer.html" class="nav-design">沙盘设计 ↗</a></nav>`;

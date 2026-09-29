@@ -83,3 +83,12 @@ python3 scripts/package-source.py
 
 TOMIX、KATO、Fine Track、UNITRACK、UNITRAM 商标归各自权利人所有。本项目与厂商无隶属或认证关系。
 # RailStudio
+
+
+## 发布更新与浏览器缓存
+
+发布前执行 `npm run build`，再提交并推送整个 `dist` 目录。构建会自动为 JS、CSS 及模块内部依赖生成统一的内容版本号，并更新源码包；重复构建不会改变版本号。服务器继续使用完整 `dist` 作为 IIS 网站目录，务必连同 `web.config` 一起更新。无需安装 IIS URL Rewrite。
+
+`web.config` 让网页、脚本、样式和 JSON 每次访问都向服务器验证是否更新（未变化可返回 304）；图鉴照片缓存七天。正常刷新或重新打开页面即可检查新版，不会自动刷新正在编辑的沙盘，也不会清除本机保存的设计。旧版已经设置的缓存无法追溯失效，首次切换策略时个别用户可能仍需强制刷新一次。
+
+仅更新本地文件不会改变服务器设置。上线后可在 Windows PowerShell 执行 `curl.exe -I http://localhost/`，确认响应包含 `Cache-Control: no-cache`；本地 Python 预览服务不读取 IIS 的 `web.config`。
