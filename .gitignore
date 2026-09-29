@@ -2,3 +2,5 @@
 node_modules/
 research/
 test-results/
+__pycache__/
+*.pyc

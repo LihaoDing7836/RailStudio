@@ -1,4 +1,10 @@
-# 枕星 · 轨道设计
+# 枕星 Train
+
+枕星 Train 个人铁路模型网站：新增四入口首页、TOMIX / KATO N 比例列车图鉴与独立产品档案。原沙盘设计器保留在 `designer.html`，原有功能和方案存储不变。
+
+列车数据同步、SQLite 存储、GitHub 定时任务及 Windows IIS 更新方式，见 [CATALOGUE.md](CATALOGUE.md)。官网资料并不覆盖全部历史发行，缺失信息会在图鉴中明确说明。
+
+## 沙盘设计
 
 中文铁路模型沙盘规划器。无运行时第三方依赖，使用 SVG 与原生 JavaScript；以模型实际毫米尺寸工作。
 
