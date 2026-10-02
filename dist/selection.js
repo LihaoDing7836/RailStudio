@@ -1,4 +1,5 @@
-import {bounds,connections,compatible,norm,rad} from './geometry.js?v=39da0e8f64deb6e6';
+import {layoutConnections} from './closures.js?v=97347951e1560da0';
+import {bounds,connections,compatible,norm,rad} from './geometry.js?v=97347951e1560da0';
 
 export function selectionCenter(pieces,byId){const b=bounds(pieces,byId);return b?{x:(b.minX+b.maxX)/2,y:(b.minY+b.maxY)/2}:null;}
 export function rotatePieces(pieces,center,degrees){
@@ -6,9 +7,9 @@ export function rotatePieces(pieces,center,degrees){
  return pieces.map(p=>{const x=p.x-center.x,y=p.y-center.y;return {...p,x:center.x+x*c-y*s,y:center.y+x*s+y*c,angle:norm(p.angle+degrees)};});
 }
 // Snap only exposed group endpoints, applying one rigid transform to all tracks.
-export function snapGroup(pieces,byId,targets,threshold){
+export function snapGroup(pieces,byId,targets,threshold,options={}){
  let best=null;const ids=new Set(pieces.map(p=>p.id));
- for(const source of connections(pieces,byId).open)for(const target of targets){
+ for(const source of (options.closures?layoutConnections({pieces,closures:options.closures},byId):connections(pieces,byId)).open)for(const target of targets){
   if(ids.has(target.pieceId)||!compatible(source,target))continue;
   const distance=Math.hypot(source.x-target.x,source.y-target.y);
   if(distance<threshold&&(!best||distance<best.distance))best={source,target,distance};

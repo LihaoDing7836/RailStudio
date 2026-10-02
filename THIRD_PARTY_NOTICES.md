@@ -20,3 +20,11 @@ Modifications made on 2026-09-26: conversion of track segments and exposed conne
 ## Manufacturer catalogs
 
 Catalog identifiers and dimensional product facts are sourced from TOMIX and KATO public Japanese catalogs. Per-part links are included in catalog.json. Product photography and descriptive articles are not redistributed. Brand and product names remain the property of their respective owners.
+
+## Three.js 0.180.0
+
+3D rendering and OrbitControls use Three.js, copyright © 2010–2025 three.js authors, under the MIT License. The full license is included at `dist/lib/three/LICENSE`.
+
+Source: https://github.com/mrdoob/three.js/tree/r180
+Pinned distribution: https://www.npmjs.com/package/three/v/0.180.0
+OrbitControls' module import has been changed to a relative local path. All rendering dependencies are hosted with this site; no runtime CDN is required.

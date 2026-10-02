@@ -16,7 +16,7 @@ def stamp(directory):
     version = digest.hexdigest()[:16]
     for p, content in clean.items():
         def replace(m):
-            if not (p.parent / m['path']).is_file():
+            if '/lib/' in '/' + m['path'] or not (p.parent / m['path']).is_file():
                 return m[0]
             return m['quote'] + m['path'] + '?v=' + version + m['quote']
         updated = REFERENCE.sub(replace, content)

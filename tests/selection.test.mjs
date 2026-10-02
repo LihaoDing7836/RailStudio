@@ -4,6 +4,7 @@ import fs from 'node:fs';
 import vm from 'node:vm';
 import * as geometry from '../dist/geometry.js';
 import * as selection from '../dist/selection.js';
+import * as closures from '../dist/closures.js';
 
 const catalog=JSON.parse(fs.readFileSync(new URL('../dist/catalog.json',import.meta.url)));
 const byId=Object.fromEntries(catalog.parts.map(p=>[p.id,p]));
@@ -22,7 +23,7 @@ function editor(){
    getScreenCTM:()=>({inverse:()=>({})}),classList:{toggle(){}}});
   return elements.get(key);
  }
- const context=vm.createContext({...geometry,...selection,URLSearchParams,location:{search:'?qa=1'},
+ const context=vm.createContext({...geometry,...selection,...closures,URLSearchParams,location:{search:'?qa=1'},
   document:{querySelector:element,querySelectorAll:()=>[]},
   window:{addEventListener:(name,fn)=>windowEvents.set(name,fn)},ResizeObserver:class{observe(){}},
   setTimeout,clearTimeout,console});
