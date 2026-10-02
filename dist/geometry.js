@@ -1,6 +1,6 @@
-import {validateClosureRecords} from './closure-schema.js?v=97347951e1560da0';
-import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=97347951e1560da0';
-import {validateOutline} from './board.js?v=97347951e1560da0';
+import {validateClosureRecords} from './closure-schema.js?v=53ebd752d1db3b5a';
+import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=53ebd752d1db3b5a';
+import {validateOutline} from './board.js?v=53ebd752d1db3b5a';
 /** Geometry uses millimetres and clockwise degrees in screen coordinates. */
 export const rad = d => d * Math.PI / 180;
 export const norm = a => ((a % 360) + 360) % 360;

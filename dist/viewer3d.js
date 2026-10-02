@@ -1,11 +1,11 @@
-import {layoutConnections} from './closures.js?v=97347951e1560da0';
+import {layoutConnections} from './closures.js?v=53ebd752d1db3b5a';
 import * as THREE from './lib/three/three.module.js';
 import {OrbitControls} from './lib/three/OrbitControls.js';
-import {boardOutline} from './board.js?v=97347951e1560da0';
-import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=97347951e1560da0';
-import {elevatedPaths} from './elevation.js?v=97347951e1560da0';
-import {worldGeometry} from './geometry.js?v=97347951e1560da0';
-import {buildingSize} from './buildings.js?v=97347951e1560da0';
+import {boardOutline} from './board.js?v=53ebd752d1db3b5a';
+import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=53ebd752d1db3b5a';
+import {elevatedPaths} from './elevation.js?v=53ebd752d1db3b5a';
+import {worldGeometry} from './geometry.js?v=53ebd752d1db3b5a';
+import {buildingSize} from './buildings.js?v=53ebd752d1db3b5a';
 export function createViewer(host,status){
  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#e9eee9');renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;host.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','沙盘 3D 视图：拖动旋转，滚轮缩放，右键平移');renderer.domElement.tabIndex=0;
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,1,1,2000000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.maxPolarAngle=Math.PI*.86;controls.screenSpacePanning=true;

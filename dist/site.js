@@ -1,9 +1,9 @@
-import { PAGE_SIZE, filterTrains, stateFromQuery, queryFromState, escapeHTML as e } from './train-catalogue.js?v=97347951e1560da0';
+import { PAGE_SIZE, filterTrains, stateFromQuery, queryFromState, escapeHTML as e } from './train-catalogue.js?v=53ebd752d1db3b5a';
 const page=document.body.dataset.page;
 const $=selector=>document.querySelector(selector);
 $('[data-header]').innerHTML=`<a class="site-brand" href="./" aria-label="枕星 Train 首页"><img src="brand/zhenxing-mark.png" width="43" height="43" alt=""><span><span class="brand-title">枕星<em>Train</em></span><span class="brand-subtitle">A WORLD IN MINIATURE</span></span></a><nav class="site-nav" aria-label="主导航"><a href="./" ${page==='home'?'aria-current="page"':''}>首页</a><a href="trains.html" ${['trains','detail'].includes(page)?'aria-current="page"':''}>列车图鉴</a><a href="designer.html" class="nav-design">沙盘设计 ↗</a></nav>`;
 $('[data-footer]').innerHTML=`<div><a class="footer-name" href="./">枕星 Train</a><span>小小比例，无限旅程。</span></div><div>个人铁路模型兴趣网站 · <a href="designer.html">沙盘设计</a> / <a href="trains.html">列车图鉴</a><small class="visit-counter">网站点击量：<span data-visit-count aria-live="polite">加载中…</span></small></div>`;
-import('./visits.js?v=97347951e1560da0');
+import('./visits.js?v=53ebd752d1db3b5a');
 function safeOfficial(url) {
   try {const u=new URL(url);return u.protocol==='https:'&&['www.tomytec.co.jp','www.katomodels.com','s3-ap-northeast-1.amazonaws.com'].includes(u.hostname)?e(u.href):'#';}catch{return '#';}
 }
