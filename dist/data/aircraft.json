@@ -1,0 +1,1032 @@
+{
+  "scale": "1:200",
+  "retrieved": "2026-10-05",
+  "scope": "32 个民航机型与自定义入口；按机型而非涂装或模型商品编号归类。",
+  "parts": [
+    {
+      "id": "AIR-200-737-700",
+      "brand": "Boeing",
+      "sku": "737-700",
+      "name": "737-700",
+      "label": "737-700",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 168.0,
+        "width": 179.0,
+        "height": 62.5
+      },
+      "prototype": {
+        "length": 33.6,
+        "wingspan": 35.8,
+        "height": 12.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737ng",
+      "status": "dimensions",
+      "notes": [
+        "带翼梢小翼构型。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-737-800",
+      "brand": "Boeing",
+      "sku": "737-800",
+      "name": "737-800",
+      "label": "737-800",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 197.5,
+        "width": 179.0,
+        "height": 62.5
+      },
+      "prototype": {
+        "length": 39.5,
+        "wingspan": 35.8,
+        "height": 12.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737ng",
+      "status": "dimensions",
+      "notes": [
+        "带翼梢小翼构型。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-737-900",
+      "brand": "Boeing",
+      "sku": "737-900",
+      "name": "737-900",
+      "label": "737-900",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 210.5,
+        "width": 179.0,
+        "height": 62.5
+      },
+      "prototype": {
+        "length": 42.1,
+        "wingspan": 35.8,
+        "height": 12.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737ng",
+      "status": "dimensions",
+      "notes": [
+        "带翼梢小翼构型。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-737-MAX-7",
+      "brand": "Boeing",
+      "sku": "737 MAX 7",
+      "name": "737 MAX 7",
+      "label": "737 MAX 7",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 178.0,
+        "width": 179.5,
+        "height": 61.5
+      },
+      "prototype": {
+        "length": 35.6,
+        "wingspan": 35.9,
+        "height": 12.3
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737max",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-737-MAX-8",
+      "brand": "Boeing",
+      "sku": "737 MAX 8",
+      "name": "737 MAX 8",
+      "label": "737 MAX 8",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 197.5,
+        "width": 179.5,
+        "height": 61.5
+      },
+      "prototype": {
+        "length": 39.5,
+        "wingspan": 35.9,
+        "height": 12.3
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737max",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-737-MAX-9",
+      "brand": "Boeing",
+      "sku": "737 MAX 9",
+      "name": "737 MAX 9",
+      "label": "737 MAX 9",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 210.5,
+        "width": 179.5,
+        "height": 61.5
+      },
+      "prototype": {
+        "length": 42.1,
+        "wingspan": 35.9,
+        "height": 12.3
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737max",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-737-MAX-10",
+      "brand": "Boeing",
+      "sku": "737 MAX 10",
+      "name": "737 MAX 10",
+      "label": "737 MAX 10",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 219.0,
+        "width": 179.5,
+        "height": 61.5
+      },
+      "prototype": {
+        "length": 43.8,
+        "wingspan": 35.9,
+        "height": 12.3
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/737max",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-777-200ER",
+      "brand": "Boeing",
+      "sku": "777-200ER",
+      "name": "777-200ER",
+      "label": "777-200ER",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 318.5,
+        "width": 304.5,
+        "height": 92.5
+      },
+      "prototype": {
+        "length": 63.7,
+        "wingspan": 60.9,
+        "height": 18.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/777",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-777-200LR",
+      "brand": "Boeing",
+      "sku": "777-200LR",
+      "name": "777-200LR",
+      "label": "777-200LR",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 318.5,
+        "width": 324.0,
+        "height": 93.0
+      },
+      "prototype": {
+        "length": 63.7,
+        "wingspan": 64.8,
+        "height": 18.6
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/777",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-777-300ER",
+      "brand": "Boeing",
+      "sku": "777-300ER",
+      "name": "777-300ER",
+      "label": "777-300ER",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 369.5,
+        "width": 324.0,
+        "height": 92.5
+      },
+      "prototype": {
+        "length": 73.9,
+        "wingspan": 64.8,
+        "height": 18.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/777",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-787-8",
+      "brand": "Boeing",
+      "sku": "787-8",
+      "name": "787-8",
+      "label": "787-8",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 283.5,
+        "width": 300.5,
+        "height": 84.5
+      },
+      "prototype": {
+        "length": 56.7,
+        "wingspan": 60.1,
+        "height": 16.9
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/787",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-787-9",
+      "brand": "Boeing",
+      "sku": "787-9",
+      "name": "787-9",
+      "label": "787-9",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 314.0,
+        "width": 300.5,
+        "height": 85
+      },
+      "prototype": {
+        "length": 62.8,
+        "wingspan": 60.1,
+        "height": 17
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/787",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-787-10",
+      "brand": "Boeing",
+      "sku": "787-10",
+      "name": "787-10",
+      "label": "787-10",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 341.5,
+        "width": 300.5,
+        "height": 85
+      },
+      "prototype": {
+        "length": 68.3,
+        "wingspan": 60.1,
+        "height": 17
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/787",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-777-8",
+      "brand": "Boeing",
+      "sku": "777-8",
+      "name": "777-8",
+      "label": "777-8",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 354.5,
+        "width": 359.0,
+        "height": 97.5
+      },
+      "prototype": {
+        "length": 70.9,
+        "wingspan": 71.8,
+        "height": 19.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/777x",
+      "status": "dimensions",
+      "notes": [
+        "翼尖展开构型；折叠后地面翼展为 64.8 m，可在属性中把模型翼展改为 324 mm。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-777-9",
+      "brand": "Boeing",
+      "sku": "777-9",
+      "name": "777-9",
+      "label": "777-9",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 383.5,
+        "width": 359.0,
+        "height": 97.5
+      },
+      "prototype": {
+        "length": 76.7,
+        "wingspan": 71.8,
+        "height": 19.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.boeing.com/commercial/777x",
+      "status": "dimensions",
+      "notes": [
+        "翼尖展开构型；折叠后地面翼展为 64.8 m，可在属性中把模型翼展改为 324 mm。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-747-8I",
+      "brand": "Boeing",
+      "sku": "747-8I",
+      "name": "747-8I",
+      "label": "747-8I",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "四发客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 381.5,
+        "width": 342.0,
+        "height": 97.0
+      },
+      "prototype": {
+        "length": 76.3,
+        "wingspan": 68.4,
+        "height": 19.4
+      },
+      "engines": 4,
+      "profile": "hump",
+      "source": "https://www.boeing.com/content/dam/boeing/boeingdotcom/company/about_bca/startup/pdf/historical/747-8I_-_passenger.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A319neo",
+      "brand": "Airbus",
+      "sku": "A319neo",
+      "name": "A319neo",
+      "label": "A319neo",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 169.2,
+        "width": 179.0,
+        "height": 58.8
+      },
+      "prototype": {
+        "length": 33.84,
+        "wingspan": 35.8,
+        "height": 11.76
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a320-family/a319neo",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A320neo",
+      "brand": "Airbus",
+      "sku": "A320neo",
+      "name": "A320neo",
+      "label": "A320neo",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 187.85,
+        "width": 179.0,
+        "height": 58.8
+      },
+      "prototype": {
+        "length": 37.57,
+        "wingspan": 35.8,
+        "height": 11.76
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a320-family/a320neo",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A321neo",
+      "brand": "Airbus",
+      "sku": "A321neo",
+      "name": "A321neo",
+      "label": "A321neo",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 222.55,
+        "width": 179.0,
+        "height": 58.8
+      },
+      "prototype": {
+        "length": 44.51,
+        "wingspan": 35.8,
+        "height": 11.76
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a320-family/a321neo",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A220-100",
+      "brand": "Airbus",
+      "sku": "A220-100",
+      "name": "A220-100",
+      "label": "A220-100",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 175,
+        "width": 175.5,
+        "height": 57.5
+      },
+      "prototype": {
+        "length": 35,
+        "wingspan": 35.1,
+        "height": 11.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-11/EN-Airbus-A220-Facts-and-Figures-November-2025.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A220-300",
+      "brand": "Airbus",
+      "sku": "A220-300",
+      "name": "A220-300",
+      "label": "A220-300",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 193.5,
+        "width": 175.5,
+        "height": 57.5
+      },
+      "prototype": {
+        "length": 38.7,
+        "wingspan": 35.1,
+        "height": 11.5
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-11/EN-Airbus-A220-Facts-and-Figures-November-2025.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A330-900",
+      "brand": "Airbus",
+      "sku": "A330-900",
+      "name": "A330-900",
+      "label": "A330-900",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 318.45,
+        "width": 320,
+        "height": 83.95
+      },
+      "prototype": {
+        "length": 63.69,
+        "wingspan": 64,
+        "height": 16.79
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a330/a330-900",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A350-900",
+      "brand": "Airbus",
+      "sku": "A350-900",
+      "name": "A350-900",
+      "label": "A350-900",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 334.0,
+        "width": 323.75,
+        "height": 85.25
+      },
+      "prototype": {
+        "length": 66.8,
+        "wingspan": 64.75,
+        "height": 17.05
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-11/Airbus-A350-Family-Facts-and-Figures%20November%202025.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A350-1000",
+      "brand": "Airbus",
+      "sku": "A350-1000",
+      "name": "A350-1000",
+      "label": "A350-1000",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 368.9,
+        "width": 323.75,
+        "height": 85.4
+      },
+      "prototype": {
+        "length": 73.78,
+        "wingspan": 64.75,
+        "height": 17.08
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2025-11/Airbus-A350-Family-Facts-and-Figures%20November%202025.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A380-800",
+      "brand": "Airbus",
+      "sku": "A380-800",
+      "name": "A380-800",
+      "label": "A380-800",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "四发客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 363.5,
+        "width": 399.0,
+        "height": 120.5
+      },
+      "prototype": {
+        "length": 72.7,
+        "wingspan": 79.8,
+        "height": 24.1
+      },
+      "engines": 4,
+      "profile": "doubledeck",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2021-10/EN-Airbus-A380-Facts-and-Figures_0.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-C919",
+      "brand": "COMAC",
+      "sku": "C919",
+      "name": "C919",
+      "label": "C919",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 194.5,
+        "width": 179.0,
+        "height": 59.75
+      },
+      "prototype": {
+        "length": 38.9,
+        "wingspan": 35.8,
+        "height": 11.95
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.icao.int/APAC/Meetings/2024%20AOPSG8/WP26%20-%20THE%20AIRPORT%20CHARACTERISTICS%20OF%20C919%20presentation.pdf",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A319",
+      "brand": "Airbus",
+      "sku": "A319",
+      "name": "A319",
+      "label": "A319",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 169.2,
+        "width": 179.0,
+        "height": 58.8
+      },
+      "prototype": {
+        "length": 33.84,
+        "wingspan": 35.8,
+        "height": 11.76
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2021-09/EN-Airbus-A320-Facts-and-Figures.pdf",
+      "status": "dimensions",
+      "notes": [
+        "采用官方表格的 Sharklet 构型翼展。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A320",
+      "brand": "Airbus",
+      "sku": "A320",
+      "name": "A320",
+      "label": "A320",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 187.85,
+        "width": 179.0,
+        "height": 58.8
+      },
+      "prototype": {
+        "length": 37.57,
+        "wingspan": 35.8,
+        "height": 11.76
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2021-09/EN-Airbus-A320-Facts-and-Figures.pdf",
+      "status": "dimensions",
+      "notes": [
+        "采用官方表格的 Sharklet 构型翼展。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A321",
+      "brand": "Airbus",
+      "sku": "A321",
+      "name": "A321",
+      "label": "A321",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "窄体 / 支线",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 222.55,
+        "width": 179.0,
+        "height": 58.8
+      },
+      "prototype": {
+        "length": 44.51,
+        "wingspan": 35.8,
+        "height": 11.76
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.airbus.com/sites/g/files/jlcbta136/files/2021-09/EN-Airbus-A320-Facts-and-Figures.pdf",
+      "status": "dimensions",
+      "notes": [
+        "采用官方表格的 Sharklet 构型翼展。",
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A330-200",
+      "brand": "Airbus",
+      "sku": "A330-200",
+      "name": "A330-200",
+      "label": "A330-200",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 294.1,
+        "width": 301.5,
+        "height": 86.95
+      },
+      "prototype": {
+        "length": 58.82,
+        "wingspan": 60.3,
+        "height": 17.39
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a330/a330-200",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A330-300",
+      "brand": "Airbus",
+      "sku": "A330-300",
+      "name": "A330-300",
+      "label": "A330-300",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 318.3,
+        "width": 301.5,
+        "height": 83.95
+      },
+      "prototype": {
+        "length": 63.66,
+        "wingspan": 60.3,
+        "height": 16.79
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a330/a330-300",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-A330-800",
+      "brand": "Airbus",
+      "sku": "A330-800",
+      "name": "A330-800",
+      "label": "A330-800",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "宽体客机",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 291.8,
+        "width": 320,
+        "height": 86.95
+      },
+      "prototype": {
+        "length": 58.36,
+        "wingspan": 64,
+        "height": 17.39
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "https://www.aircraft.airbus.com/en/aircraft/a330/a330-800",
+      "status": "dimensions",
+      "notes": [
+        "长、翼展、高按原型 1:200 换算；机身曲面、机翼和发动机为自绘示意，不代表某品牌成品模具。"
+      ],
+      "retrieved": "2026-10-05"
+    },
+    {
+      "id": "AIR-200-CUSTOM",
+      "brand": "自定义",
+      "sku": "CUSTOM",
+      "name": "自定义飞机",
+      "label": "自定义飞机",
+      "kind": "aircraft",
+      "scale": "1:200",
+      "category": "自定义",
+      "geometry": {
+        "type": "aircraft"
+      },
+      "dimensions": {
+        "length": 200,
+        "width": 180,
+        "height": 60
+      },
+      "engines": 2,
+      "profile": "jet",
+      "source": "",
+      "status": "approximate",
+      "notes": [
+        "输入实物模型的机长、翼展、高度和名称；默认尺寸仅为占位。"
+      ]
+    }
+  ]
+}

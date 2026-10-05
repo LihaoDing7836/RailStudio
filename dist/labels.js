@@ -1,4 +1,5 @@
-import {worldGeometry} from './geometry.js?v=53ebd752d1db3b5a';
+import {isTrack} from './scenery-geometry.js?v=c5604777f33f6308';
+import {worldGeometry} from './geometry.js?v=c5604777f33f6308';
 
 const number=n=>Number(n.toFixed(1)).toString();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -32,7 +33,7 @@ function anchorOnTrack(points){
 }
 
 export function layoutTrackLabels(pieces,byId,{unit=1,viewport=null}={}){
- return pieces.filter(piece=>byId[piece.partId].kind!=='building').flatMap(piece=>{
+ return pieces.filter(piece=>isTrack(byId[piece.partId])).flatMap(piece=>{
   const part=byId[piece.partId],points=worldGeometry(part,piece).paths[0]?.points;if(!points?.length)return [];
   const anchor=anchorOnTrack(points);
   if(viewport&&(anchor.x<viewport.x||anchor.y<viewport.y||anchor.x>viewport.x+viewport.w||anchor.y>viewport.y+viewport.h))return [];

@@ -1,23 +1,25 @@
-import {layoutConnections} from './closures.js?v=53ebd752d1db3b5a';
+import {isScenery} from './scenery-geometry.js?v=c5604777f33f6308';
+import {createScenery3D} from './scenery3d.js?v=c5604777f33f6308';
+import {layoutConnections} from './closures.js?v=c5604777f33f6308';
 import * as THREE from './lib/three/three.module.js';
 import {OrbitControls} from './lib/three/OrbitControls.js';
-import {boardOutline} from './board.js?v=53ebd752d1db3b5a';
-import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=53ebd752d1db3b5a';
-import {elevatedPaths} from './elevation.js?v=53ebd752d1db3b5a';
-import {worldGeometry} from './geometry.js?v=53ebd752d1db3b5a';
-import {buildingSize} from './buildings.js?v=53ebd752d1db3b5a';
+import {boardOutline} from './board.js?v=c5604777f33f6308';
+import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=c5604777f33f6308';
+import {elevatedPaths} from './elevation.js?v=c5604777f33f6308';
+import {worldGeometry} from './geometry.js?v=c5604777f33f6308';
+import {buildingSize} from './buildings.js?v=c5604777f33f6308';
 export function createViewer(host,status){
  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#e9eee9');renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;host.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','沙盘 3D 视图：拖动旋转，滚轮缩放，右键平移');renderer.domElement.tabIndex=0;
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,1,1,2000000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.maxPolarAngle=Math.PI*.86;controls.screenSpacePanning=true;
  scene.add(new THREE.HemisphereLight('#ffffff','#7e8975',1.7));const light=new THREE.DirectionalLight('#fff7e8',1.8);light.position.set(-400,1200,800);scene.add(light);
  let terrainMeshes=[],cutaway=false,group=new THREE.Group(),key='',project,extent=1800,center=new THREE.Vector3();scene.add(group);
- const draw=()=>renderer.render(scene,camera);controls.addEventListener('change',draw);
+ const draw=()=>{const near=Math.max(.1,Math.min(extent/100,camera.position.distanceTo(controls.target)/100));if(camera.near!==near){camera.near=near;camera.updateProjectionMatrix();}renderer.render(scene,camera);};controls.addEventListener('change',draw);
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();status('3D 显示已中断；方案仍然保留，请返回 2D 并刷新页面恢复。');});
  const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(w&&h){renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();draw();}};const observer=new ResizeObserver(resize);observer.observe(host);
  function mesh(vertices,color,roughness=.85){if(!vertices.length)return;const g=new THREE.BufferGeometry();g.setAttribute('position',new THREE.Float32BufferAttribute(vertices,3));g.computeVertexNormals();const m=new THREE.Mesh(g,new THREE.MeshStandardMaterial({color,roughness,side:THREE.DoubleSide}));group.add(m);return m;}
  const vertex=p=>[p.x,p.z,p.y],tri=(out,a,b,c)=>out.push(...vertex(a),...vertex(b),...vertex(c));
  function ribbon(out,points,width,offset=0,lift=0,gradient={x:0,y:0}){const edges=points.map((p,i)=>{const a=points[Math.max(0,i-1)],b=points[Math.min(points.length-1,i+1)],len=Math.hypot(b.x-a.x,b.y-a.y)||1,nx=-(b.y-a.y)/len,ny=(b.x-a.x)/len;return [-width/2,width/2].map(d=>({x:p.x+nx*(offset+d),y:p.y+ny*(offset+d),z:p.z+lift+(gradient.x*nx+gradient.y*ny)*(offset+d)}));});for(let i=1;i<edges.length;i++){tri(out,edges[i-1][0],edges[i][0],edges[i][1]);tri(out,edges[i-1][0],edges[i][1],edges[i-1][1]);}}
- function update(p,byId){const next=JSON.stringify([p.board,p.pieces,p.layers,p.terrain,p.closures]);if(next===key)return;key=next;project=p;terrainMeshes=[];group.traverse(o=>{o.geometry?.dispose();if(o.material){(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>m.dispose());}});scene.remove(group);group=new THREE.Group();scene.add(group);
+ function update(p,byId){const next=JSON.stringify([p.board,p.pieces,p.layers,p.terrain,p.closures]);if(next===key)return;key=next;project=p;terrainMeshes=[];group.traverse(o=>{o.geometry?.dispose();if(o.material){(Array.isArray(o.material)?o.material:[o.material]).forEach(m=>{m.map?.dispose();m.dispose();});}});scene.remove(group);group=new THREE.Group();scene.add(group);
   const outline=boardOutline(p.board),shape=new THREE.Shape(outline.map(q=>new THREE.Vector2(q.x,q.y))),base=new THREE.ShapeGeometry(shape),positions=base.attributes.position,indices=base.index.array,land=[],side=[],terrain=p.terrain||[];const depth=indices.length>48?5:6;
   function subdivide(a,b,c,d){if(d===0){tri(land,{...a,z:terrainHeight(terrain,a.x,a.y)},{...c,z:terrainHeight(terrain,c.x,c.y)},{...b,z:terrainHeight(terrain,b.x,b.y)});return;}const ab={x:(a.x+b.x)/2,y:(a.y+b.y)/2},bc={x:(b.x+c.x)/2,y:(b.y+c.y)/2},ca={x:(c.x+a.x)/2,y:(c.y+a.y)/2};subdivide(a,ab,ca,d-1);subdivide(ab,b,bc,d-1);subdivide(ca,bc,c,d-1);subdivide(ab,bc,ca,d-1);}
   for(let i=0;i<indices.length;i+=3){const pts=[0,1,2].map(j=>({x:positions.getX(indices[i+j]),y:positions.getY(indices[i+j])}));subdivide(...pts,depth);}base.dispose();terrainMeshes.push(mesh(land,'#8ea67e'));
@@ -25,7 +27,7 @@ export function createViewer(host,status){
   for(let i=0;i<outline.length;i++){const a=outline[i],b=outline[(i+1)%outline.length],n=Math.max(1,Math.ceil(Math.hypot(b.x-a.x,b.y-a.y)/40));for(let j=0;j<n;j++){const u={x:a.x+(b.x-a.x)*j/n,y:a.y+(b.y-a.y)*j/n},v={x:a.x+(b.x-a.x)*(j+1)/n,y:a.y+(b.y-a.y)*(j+1)/n},ut={...u,z:terrainHeight(terrain,u.x,u.y)},vt={...v,z:terrainHeight(terrain,v.x,v.y)};tri(side,ut,{...u,z:bottom},{...v,z:bottom});tri(side,ut,{...v,z:bottom},vt);}}terrainMeshes.push(mesh(side,'#9a886b'));
   const beds=[],rails=[],ties=[],supports=[],houses=[],roofs=[];let trackCount=0;
   const box=(out,x,y,z,w,d,h)=>{const v=[{x,y,z},{x:x+w,y,z},{x:x+w,y:y+d,z},{x,y:y+d,z},{x,y,z:z+h},{x:x+w,y,z:z+h},{x:x+w,y:y+d,z:z+h},{x,y:y+d,z:z+h}];for(const [a,b,c,e] of [[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7],[4,5,6,7]]){tri(out,v[a],v[b],v[c]);tri(out,v[a],v[c],v[e]);}};
-  for(const q of p.pieces){if(!layerVisible(q,p.layers))continue;const part=byId[q.partId];if(part.kind==='building'){const d=buildingSize(part,q),corners=worldGeometry(part,q).paths[0]?.points.slice(0,4);if(!d||!corners)continue;const h=d.height||40,z=q.z||0,low=corners.map(v=>({...v,z})),high=corners.map(v=>({...v,z:z+h}));for(let i=0;i<4;i++){const j=(i+1)%4;tri(houses,low[i],low[j],high[j]);tri(houses,low[i],high[j],high[i]);}tri(roofs,high[0],high[1],high[2]);tri(roofs,high[0],high[2],high[3]);continue;}
+  for(const q of p.pieces){if(!layerVisible(q,p.layers))continue;const part=byId[q.partId];if(isScenery(part)){group.add(createScenery3D(part,q));continue;}if(part.kind==='building'){const d=buildingSize(part,q),corners=worldGeometry(part,q).paths[0]?.points.slice(0,4);if(!d||!corners)continue;const h=d.height||40,z=q.z||0,low=corners.map(v=>({...v,z})),high=corners.map(v=>({...v,z:z+h}));for(let i=0;i<4;i++){const j=(i+1)%4;tri(houses,low[i],low[j],high[j]);tri(houses,low[i],high[j],high[i]);}tri(roofs,high[0],high[1],high[2]);tri(roofs,high[0],high[2],high[3]);continue;}
    trackCount++;const gradient=worldSlopeGradient(q),gauge=part.scale==='HO'?16.5:9;for(const path of elevatedPaths(part,q,25)){const pts=path.points;ribbon(beds,pts,gauge+13,0,1,gradient);ribbon(rails,pts,1.6,-gauge/2,3,gradient);ribbon(rails,pts,1.6,gauge/2,3,gradient);let traveled=0,nextTie=0,nextPier=70;
     for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],length=Math.hypot(b.x-a.x,b.y-a.y);if(!length)continue;const nx=-(b.y-a.y)/length,ny=(b.x-a.x)/length;
      for(;nextTie<=traveled+length;nextTie+=p.pieces.length>800?24:9){const f=(nextTie-traveled)/length,x=a.x+(b.x-a.x)*f,y=a.y+(b.y-a.y)*f,z=a.z+(b.z-a.z)*f;const half=gauge/2+3,crossRise=(gradient.x*nx+gradient.y*ny)*half;ribbon(ties,[{x:x-nx*half,y:y-ny*half,z:z-crossRise},{x:x+nx*half,y:y+ny*half,z:z+crossRise}],2.4,0,2,gradient);}

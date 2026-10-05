@@ -1,5 +1,6 @@
-import {worldGeometry,angleDiff} from './geometry.js?v=53ebd752d1db3b5a';
-import {terrainHeight} from './elevation-schema.js?v=53ebd752d1db3b5a';
+import {isTrack} from './scenery-geometry.js?v=c5604777f33f6308';
+import {worldGeometry,angleDiff} from './geometry.js?v=c5604777f33f6308';
+import {terrainHeight} from './elevation-schema.js?v=c5604777f33f6308';
 // Resample the same 3D geometry that is used by endpoint snapping.
 export function elevatedPaths(part,piece,step=30){return worldGeometry(part,piece).paths.map(path=>{
  const points=[];let length=0;
@@ -31,7 +32,7 @@ function planePlan(pieces,byId,start,end,reverse,angle){
  return {mode:'plane',angle,length:span,start:reverse?B:A,end:reverse?A:B,pieces:pieces.map(p=>{const a=p.angle*Math.PI/180,c=Math.cos(a),s=Math.sin(a),f=p.flip||1;return {...p,z:start,zEnd:end,slope:{a:sign*(ux*c+uy*s)/span,b:sign*f*(-ux*s+uy*c)/span,c:reverse?1-(p.x*ux+p.y*uy-lo)/span:(p.x*ux+p.y*uy-lo)/span}};})};
 }
 export function rampPlan(selection,byId,start,end,reverse=false,options={}){
- const pieces=selection.filter(p=>byId[p.partId]?.kind!=='building');if(!pieces.length||pieces.length>5000)throw Error('请至少选择一段可放置轨道');
+ const pieces=selection.filter(p=>isTrack(byId[p.partId]));if(!pieces.length||pieces.length>5000)throw Error('请至少选择一段可放置轨道');
  if(!Number.isFinite(start)||!Number.isFinite(end))throw Error('楼层高度无效');let plan;
  if(options.mode!=='plane'){try{const ordered=rampChain(pieces,byId,reverse),length=ordered.reduce((n,p)=>n+p.length,0);if(length<.001)throw Error('坡道长度无效');let at=0;plan={mode:'route',length,start:ordered[0].start,end:ordered.at(-1).end,pieces:ordered.map(n=>{const a=start+(end-start)*at/length;at+=n.length;const b=start+(end-start)*at/length;const p={...n.piece,z:n.entry===0?a:b,zEnd:n.entry===0?b:a};delete p.slope;return p;})};}catch{/* A shared plane defines all junctions and crossings continuously. */}}
  plan??=planePlan(pieces,byId,start,end,reverse,options.angle);
@@ -40,7 +41,7 @@ export function rampPlan(selection,byId,start,end,reverse=false,options={}){
 }
 export function elevationWarnings(project,byId){
  const issues=[],segments=[],limit=project.designLimits||{maxGrade:3,clearance:50};let buried=0,steep=0;
- for(const p of project.pieces){const part=byId[p.partId];if(part.kind==='building')continue;const paths=elevatedPaths(part,p,45);if(maximumGrade(part,p)>limit.maxGrade+.001)steep++;
+ for(const p of project.pieces){const part=byId[p.partId];if(!isTrack(part))continue;const paths=elevatedPaths(part,p,45);if(maximumGrade(part,p)>limit.maxGrade+.001)steep++;
  if(paths.some(path=>path.points.some(q=>terrainHeight(project.terrain||[],q.x,q.y)>q.z+2)))buried++;
  for(const path of paths)for(let i=1;i<path.points.length;i++)segments.push({a:path.points[i-1],b:path.points[i],id:p.id});}
  if(steep)issues.push(`${steep} 段坡度超过设定的 ${limit.maxGrade}%`);if(buried)issues.push(`${buried} 段轨道低于地形表面（隧道需单独设计净空）`);
