@@ -5167,10 +5167,17 @@
         "spacing": 33
       },
       "status": "dimensions",
-      "notes": [],
+      "notes": [
+        "设计器按双端可接 KATO / TOMIX 的转接件处理；实物须按厂家说明更换接头、核对道床与接口，软件兼容不代表免改装直连。"
+      ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "S62"
+      "label": "S62J",
+      "adapterBrands": [
+        "KATO",
+        "TOMIX"
+      ],
+      "appearance": "adapter"
     },
     {
       "id": "KATO-N-20-054",
@@ -11733,10 +11740,17 @@
         "spacing": 37
       },
       "status": "dimensions",
-      "notes": [],
+      "notes": [
+        "设计器按双端可接 KATO / TOMIX 的转接件处理；实物须按厂家说明更换接头、核对道床与接口，软件兼容不代表免改装直连。"
+      ],
       "pack": 4,
       "system": "Fine Track",
-      "label": "S35"
+      "label": "S35-J",
+      "adapterBrands": [
+        "KATO",
+        "TOMIX"
+      ],
+      "appearance": "adapter"
     },
     {
       "id": "TOMIX-N-1530",
@@ -16467,13 +16481,128 @@
       "pack": null,
       "system": "UNITRACK",
       "label": "S62"
+    },
+    {
+      "id": "TOMIX-N-91045-C1641-5-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91045",
+      "name": "築堤大カーブセット C1641-5-EM",
+      "label": "C1641-5-EM",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91045.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1641,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": 2,
+      "appearance": "embankment",
+      "notes": [
+        "套装 91045 内单节组件 C1641-5-EM，每套含 2 节；清单数量按放置节数统计。",
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
+      ]
+    },
+    {
+      "id": "TOMIX-N-91045-CR1641-5-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91045",
+      "name": "築堤大カーブセット CR1641-5-EM",
+      "label": "CR1641-5-EM",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91045.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1641,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": 2,
+      "appearance": "embankment",
+      "notes": [
+        "套装 91045 内单节组件 CR1641-5-EM，每套含 2 节；清单数量按放置节数统计。",
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
+      ]
+    },
+    {
+      "id": "TOMIX-N-91045-CL1641-5-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91045",
+      "name": "築堤大カーブセット CL1641-5-EM",
+      "label": "CL1641-5-EM",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91045.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1641,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": 2,
+      "appearance": "embankment",
+      "notes": [
+        "套装 91045 内单节组件 CL1641-5-EM，每套含 2 节；清单数量按放置节数统计。",
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
+      ]
+    },
+    {
+      "id": "TOMIX-N-91045-S140-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91045",
+      "name": "築堤大カーブセット S140-EM",
+      "label": "S140-EM",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91045.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "straight",
+        "length": 140
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": 1,
+      "appearance": "embankment",
+      "notes": [
+        "套装 91045 内单节组件 S140-EM，每套含 1 节；清单数量按放置节数统计。",
+        "S140 普通直轨搭配套装内 S140-EM 道床与堤坝表示，未虚构独立销售编号。"
+      ]
+    },
+    {
+      "id": "TOMIX-N-91046-C1641-5-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91046",
+      "name": "築堤大カーブセット C1641-5-EM",
+      "label": "C1641-5-EM",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91046.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1641,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": 6,
+      "appearance": "embankment",
+      "notes": [
+        "套装 91046 内单节组件 C1641-5-EM，每套含 6 节；清单数量按放置节数统计。",
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
+      ]
     }
   ],
   "counts": {
-    "dimensions": 270,
+    "dimensions": 275,
     "library": 48,
     "approximate": 13,
     "pending": 3
   },
-  "geometryAttribution": "Additional geometry: XTrackCAD parameter library, Dwyane Ward, Dave Bullis and contributors. GPL-2.0. Converted to mm on 2026-09-26; raw sources and license included."
+  "geometryAttribution": "Additional geometry: XTrackCAD parameter library, Dwyane Ward, Dave Bullis and contributors. GPL-2.0. Converted to mm on 2026-09-26; raw sources and license included.",
+  "supplemented": "2026-10-07"
 }

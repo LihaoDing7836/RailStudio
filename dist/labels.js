@@ -1,10 +1,13 @@
-import {isTrack} from './scenery-geometry.js?v=c5604777f33f6308';
-import {worldGeometry} from './geometry.js?v=c5604777f33f6308';
+import {trackStyle} from './track-style.js?v=d4452c6508974d83';
+import {isTrack} from './scenery-geometry.js?v=d4452c6508974d83';
+import {worldGeometry} from './geometry.js?v=d4452c6508974d83';
 
 const number=n=>Number(n.toFixed(1)).toString();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-export function trackSpecification(part,piece){
+export function trackSpecification(part,piece){const text=baseSpecification(part,piece),tag=trackStyle(part).tag;return tag&&!text.includes(tag)?`${text} · ${tag}`:text;}
+function baseSpecification(part,piece){
  const g=part.geometry,L=piece.length??g.length;
+ if(part.appearance==='embankment')return part.label;
  if(g.type==='curve'||g.type==='doubleCurve')return `${g.type==='doubleCurve'?'D':''}R${number(g.radius)}${g.type==='doubleCurve'?'/'+number(g.radius-g.spacing):''}–${number(g.angle)}°`;
  if(g.type==='flex')return `柔性轨 ${number(L)}mm / ${number(piece.bend||0)}°`;
  if(g.type==='straight')return `S${number(L)}`;

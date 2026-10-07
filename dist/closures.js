@@ -1,4 +1,4 @@
-import {connections,worldGeometry,compatible,angleDiff} from './geometry.js?v=c5604777f33f6308';
+import {connections,worldGeometry,compatible,angleDiff} from './geometry.js?v=d4452c6508974d83';
 export const closurePolicy={ratio:.0015,minGap:.6,maxGap:8,minAngle:.6,maxAngle:3,anglePerMM:.0003};
 export const portKey=e=>JSON.stringify([e.pieceId,e.index]);
 // These are conservative software design budgets, NOT manufacturer tolerances.

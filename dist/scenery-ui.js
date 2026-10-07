@@ -1,6 +1,6 @@
-import {uid} from './ids.js?v=c5604777f33f6308';
-import {isScenery,sceneConfig,sceneCenterline,pathLength,validateScene} from './scenery-geometry.js?v=c5604777f33f6308';
-import {sceneryMarkup} from './scenery.js?v=c5604777f33f6308';
+import {uid} from './ids.js?v=d4452c6508974d83';
+import {isScenery,sceneConfig,sceneCenterline,pathLength,validateScene} from './scenery-geometry.js?v=d4452c6508974d83';
+import {sceneryMarkup} from './scenery.js?v=d4452c6508974d83';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export class SceneryUI{
  constructor(api){this.api=api;this.draft=null;this.drag=null;this.hover=null;

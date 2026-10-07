@@ -1,6 +1,7 @@
-import {isTrack} from './scenery-geometry.js?v=c5604777f33f6308';
-import {worldGeometry,angleDiff} from './geometry.js?v=c5604777f33f6308';
-import {terrainHeight} from './elevation-schema.js?v=c5604777f33f6308';
+import {compatible} from './geometry.js?v=d4452c6508974d83';
+import {isTrack} from './scenery-geometry.js?v=d4452c6508974d83';
+import {worldGeometry,angleDiff} from './geometry.js?v=d4452c6508974d83';
+import {terrainHeight} from './elevation-schema.js?v=d4452c6508974d83';
 // Resample the same 3D geometry that is used by endpoint snapping.
 export function elevatedPaths(part,piece,step=30){return worldGeometry(part,piece).paths.map(path=>{
  const points=[];let length=0;
@@ -15,7 +16,7 @@ export function rampChain(pieces,byId,reverse=false){
  if(!pieces.length||pieces.length>5000)throw Error('请选择轨道');
  const nodes=pieces.map(p=>{const part=byId[p.partId],g=worldGeometry(part,p);if(part.kind==='building'||(!corridorTypes.has(part.geometry.type)&&!(g.paths.length===1&&g.endpoints.length===2)))throw Error('复杂选区采用方向坡面');const sides=g.endpoints.map(e=>{let start=Infinity,end=Infinity;for(const path of g.paths){const a=path.points[0],b=path.points.at(-1);start=Math.min(start,Math.hypot(e.x-a.x,e.y-a.y));end=Math.min(end,Math.hypot(e.x-b.x,e.y-b.y));}if(Math.min(start,end)>.01||Math.abs(start-end)<.00001)throw Error('复杂端口采用方向坡面');return start<end?0:1;});return {p,g,sides,links:[new Set(),new Set()]};});
  const ports=nodes.flatMap((n,i)=>n.g.endpoints.map((e,j)=>({e,i,side:n.sides[j]}))),grid=new Map();
- for(const v of ports){const {e,i,side}=v,x=Math.floor(e.x/.6),y=Math.floor(e.y/.6);for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)for(const q of grid.get((x+dx)+','+(y+dy))||[]){const f=q.e;if(q.i!==i&&e.brand===f.brand&&e.scale===f.scale&&e.connector===f.connector&&Math.hypot(e.x-f.x,e.y-f.y)<.6&&angleDiff(e.angle,f.angle+180)<.6){nodes[i].links[side].add(q.i+':'+q.side);nodes[q.i].links[q.side].add(i+':'+side);if(nodes[i].links[side].size>1||nodes[q.i].links[q.side].size>1)throw Error('分支选区采用方向坡面');}}const key=x+','+y;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(v);}
+ for(const v of ports){const {e,i,side}=v,x=Math.floor(e.x/.6),y=Math.floor(e.y/.6);for(let dx=-1;dx<=1;dx++)for(let dy=-1;dy<=1;dy++)for(const q of grid.get((x+dx)+','+(y+dy))||[]){const f=q.e;if(q.i!==i&&compatible({...e,z:0},{...f,z:0})&&Math.hypot(e.x-f.x,e.y-f.y)<.6&&angleDiff(e.angle,f.angle+180)<.6){nodes[i].links[side].add(q.i+':'+q.side);nodes[q.i].links[q.side].add(i+':'+side);if(nodes[i].links[side].size>1||nodes[q.i].links[q.side].size>1)throw Error('分支选区采用方向坡面');}}const key=x+','+y;if(!grid.has(key))grid.set(key,[]);grid.get(key).push(v);}
  if(nodes.some(n=>n.links.some(l=>l.size>1)))throw Error('分支选区采用方向坡面');
  const ends=nodes.flatMap((n,i)=>n.links.map((l,e)=>l.size?null:[i,e]).filter(Boolean));if(ends.length!==2)throw Error('闭环或分离选区采用方向坡面');
  let [i,entry]=ends[reverse?1:0],seen=new Set(),ordered=[];

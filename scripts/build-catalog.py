@@ -135,6 +135,9 @@ override('KATO','N','40-025',{'type':'transition','length':124,'spacing':25,'end
 for p in parts:
  if p['brand']=='KATO' and p['sku']=='20-092':p['source']='https://www.katomodels.com/product/n/unitrack_s33_s38'
 
+import runpy
+runpy.run_path(str(ROOT/'scripts/track-supplements.py'))['apply'](parts)
+
 # No fictitious product IDs or generic shapes for unresolved turntables / compound points.
 parts.sort(key=lambda p:(p['brand'],p['scale'],p['category'],p['sku'],p['id']))
 counts=collections.Counter(p['status'] for p in parts)

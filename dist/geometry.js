@@ -1,7 +1,7 @@
-import {isScenery,sceneryGeometry,validateScene} from './scenery-geometry.js?v=c5604777f33f6308';
-import {validateClosureRecords} from './closure-schema.js?v=c5604777f33f6308';
-import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=c5604777f33f6308';
-import {validateOutline} from './board.js?v=c5604777f33f6308';
+import {isScenery,sceneryGeometry,validateScene} from './scenery-geometry.js?v=d4452c6508974d83';
+import {validateClosureRecords} from './closure-schema.js?v=d4452c6508974d83';
+import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=d4452c6508974d83';
+import {validateOutline} from './board.js?v=d4452c6508974d83';
 /** Geometry uses millimetres and clockwise degrees in screen coordinates. */
 export const rad = d => d * Math.PI / 180;
 export const norm = a => ((a % 360) + 360) % 360;
@@ -36,8 +36,8 @@ export function geometry(part, piece={}) {
  return {paths,endpoints,length:paths.reduce((n,p)=>n+p.length,0)};
 }
 export const pathData=points=>points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ');
-export function worldGeometry(part,piece){const g=geometry(part,piece);return {...g,paths:g.paths.map(path=>{const ds=[0];for(let i=1;i<path.points.length;i++)ds.push(ds.at(-1)+Math.hypot(path.points[i].x-path.points[i-1].x,path.points[i].y-path.points[i-1].y));const length=ds.at(-1)||1;return {...path,points:path.points.map((q,i)=>({...transform(q,piece),z:pieceElevation(piece,q,ds[i]/length)}))};}),endpoints:g.endpoints.map((e,i)=>({...transform(e,piece),z:pieceElevation(piece,e,g.paths.some(p=>p.start&&Math.hypot(p.start.x-e.x,p.start.y-e.y)<.001)?0:1),pieceId:piece.id,index:i,brand:part.brand,scale:part.scale,connector:part.geometry.type==='flex'?'bare':'standard'}))};}
-export function compatible(a,b){return a.brand===b.brand&&a.scale===b.scale&&(a.connector||'standard')===(b.connector||'standard')&&Math.abs((a.z||0)-(b.z||0))<.5;}
+export function worldGeometry(part,piece){const g=geometry(part,piece);return {...g,paths:g.paths.map(path=>{const ds=[0];for(let i=1;i<path.points.length;i++)ds.push(ds.at(-1)+Math.hypot(path.points[i].x-path.points[i-1].x,path.points[i].y-path.points[i-1].y));const length=ds.at(-1)||1;return {...path,points:path.points.map((q,i)=>({...transform(q,piece),z:pieceElevation(piece,q,ds[i]/length)}))};}),endpoints:g.endpoints.map((e,i)=>({...transform(e,piece),z:pieceElevation(piece,e,g.paths.some(p=>p.start&&Math.hypot(p.start.x-e.x,p.start.y-e.y)<.001)?0:1),pieceId:piece.id,index:i,brand:part.brand,adapterBrands:part.adapterBrands,scale:part.scale,connector:part.geometry.type==='flex'?'bare':'standard'}))};}
+export function compatible(a,b){return (a.brand===b.brand||a.adapterBrands?.includes(b.brand)||b.adapterBrands?.includes(a.brand))&&a.scale===b.scale&&(a.connector||'standard')===(b.connector||'standard')&&Math.abs((a.z||0)-(b.z||0))<.5;}
 export function connections(pieces,byId,tolerance=.6){
  const endpoints=pieces.flatMap(p=>worldGeometry(byId[p.partId],p).endpoints),connected=new Set(),pairs=[],grid=new Map();
  for(let i=0;i<endpoints.length;i++){const a=endpoints[i],gx=Math.floor(a.x/tolerance),gy=Math.floor(a.y/tolerance);let match=-1;

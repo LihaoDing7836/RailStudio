@@ -1,8 +1,8 @@
-import {layerColors,shiftLayer,belongsToLayer,layerVisible} from './elevation-schema.js?v=c5604777f33f6308';
-import {rampPlan,elevationWarnings} from './elevation.js?v=c5604777f33f6308';
-import {boardPath,containsPoint,boardOutline} from './board.js?v=c5604777f33f6308';
+import {layerColors,shiftLayer,belongsToLayer,layerVisible} from './elevation-schema.js?v=d4452c6508974d83';
+import {rampPlan,elevationWarnings} from './elevation.js?v=d4452c6508974d83';
+import {boardPath,containsPoint,boardOutline} from './board.js?v=d4452c6508974d83';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
-import {uid} from './ids.js?v=c5604777f33f6308';
+import {uid} from './ids.js?v=d4452c6508974d83';
 export class LevelsUI{
  constructor(api){this.api=api;this.other=true;this.terrainId=null;this.mode='2d';this.pendingTerrain=false;
   $('#view-2d').onclick=()=>this.setView('2d');$('#view-3d').onclick=()=>this.setView('3d');
@@ -16,7 +16,7 @@ export class LevelsUI{
  visible(p){return layerVisible(p,this.api.project().layers)&&(this.mode==='3d'||this.other||this.editable(p));}
  activate(id){this.api.clear();this.api.commit(p=>{p.activeLayerId=id;p.layers.find(l=>l.id===id).visible=true;});}
  async setView(mode){this.pendingTerrain=false;this.api.clear();this.mode=mode;const three=mode==='3d';this.api.view(three);$('#canvas-wrap').classList.toggle('is-3d',three);$('#viewer3d').hidden=!three;$('#view-2d').classList.toggle('active',!three);$('#view-3d').classList.toggle('active',three);$('#camera-tools').hidden=!three;$('#other-levels').disabled=three;this.api.refresh();
-  if(three){$('#viewer-message').textContent='正在准备立体沙盘…';try{if(!this.viewer){const {createViewer}=await (this.load??=import('./viewer3d.js?v=c5604777f33f6308'));if(this.mode!=='3d')return;if(!this.viewer)this.viewer=createViewer($('#viewer3d'),message=>{$('#viewer-message').textContent=message;});}if(this.mode!=='3d')return;this.viewer.update(this.api.project(),this.api.byId());this.viewer.xray($('#terrain-xray').getAttribute('aria-pressed')==='true');this.viewer.resize();this.viewer.preset('iso');$('#viewer-message').textContent='拖动旋转 · 滚轮缩放 · 右键平移 · 返回 2D 编辑';}catch(e){$('#viewer-message').textContent='3D 无法启动，请启用浏览器硬件加速，或返回 2D 继续设计。';console.error(e);}}
+  if(three){$('#viewer-message').textContent='正在准备立体沙盘…';try{if(!this.viewer){const {createViewer}=await (this.load??=import('./viewer3d.js?v=d4452c6508974d83'));if(this.mode!=='3d')return;if(!this.viewer)this.viewer=createViewer($('#viewer3d'),message=>{$('#viewer-message').textContent=message;});}if(this.mode!=='3d')return;this.viewer.update(this.api.project(),this.api.byId());this.viewer.xray($('#terrain-xray').getAttribute('aria-pressed')==='true');this.viewer.resize();this.viewer.preset('iso');$('#viewer-message').textContent='拖动旋转 · 滚轮缩放 · 右键平移 · 返回 2D 编辑';}catch(e){$('#viewer-message').textContent='3D 无法启动，请启用浏览器硬件加速，或返回 2D 继续设计。';console.error(e);}}
   else this.api.redraw();
  }
  render(){const p=this.api.project(),l=this.current(),selection=this.api.selected();

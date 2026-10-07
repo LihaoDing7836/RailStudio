@@ -1,4 +1,4 @@
-import {sceneConfig,sceneCenterline,roadEdges,aircraftPlan,rect,runwayNames,sceneryGeometry} from './scenery-geometry.js?v=c5604777f33f6308';
+import {sceneConfig,sceneCenterline,roadEdges,aircraftPlan,rect,runwayNames,sceneryGeometry} from './scenery-geometry.js?v=d4452c6508974d83';
 const esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 const defs=[
  ['ROAD','road','道路','自由绘制道路',{length:300,width:35,height:0,lanes:2,curved:true,color:'#626b71'}],
