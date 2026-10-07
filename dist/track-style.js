@@ -1,5 +1,5 @@
 // Appearance widths are drawing conventions, not manufacturer clearance envelopes.
-import {pathData} from './geometry.js?v=d4452c6508974d83';
+import {pathData} from './geometry.js?v=87ae808bfa10375d';
 export function trackStyle(part){
  const n=(part.name||'')+' '+(part.label||''),gauge=part.scale==='HO'?16.5:9;
  const type=part.appearance||(/築堤|\bEM\b/.test(n)?'embankment':/スラブ|スラブ|SL/.test(n)?'slab':/鉄橋|トラス|ガーダー/.test(n)?'bridge':/高架/.test(n)?'viaduct':/ワイド|-WP|－WP/.test(n)?'wide':/トラム|-WT/.test(n)?'tram':/PC|コンクリート/.test(n)?'pc':'standard');

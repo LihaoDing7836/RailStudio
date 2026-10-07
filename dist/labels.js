@@ -1,6 +1,6 @@
-import {trackStyle} from './track-style.js?v=d4452c6508974d83';
-import {isTrack} from './scenery-geometry.js?v=d4452c6508974d83';
-import {worldGeometry} from './geometry.js?v=d4452c6508974d83';
+import {trackStyle} from './track-style.js?v=87ae808bfa10375d';
+import {isTrack} from './scenery-geometry.js?v=87ae808bfa10375d';
+import {worldGeometry} from './geometry.js?v=87ae808bfa10375d';
 
 const number=n=>Number(n.toFixed(1)).toString();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));

@@ -1,7 +1,7 @@
-import {isScenery,sceneryGeometry,validateScene} from './scenery-geometry.js?v=d4452c6508974d83';
-import {validateClosureRecords} from './closure-schema.js?v=d4452c6508974d83';
-import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=d4452c6508974d83';
-import {validateOutline} from './board.js?v=d4452c6508974d83';
+import {isScenery,sceneryGeometry,validateScene} from './scenery-geometry.js?v=87ae808bfa10375d';
+import {validateClosureRecords} from './closure-schema.js?v=87ae808bfa10375d';
+import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=87ae808bfa10375d';
+import {validateOutline} from './board.js?v=87ae808bfa10375d';
 /** Geometry uses millimetres and clockwise degrees in screen coordinates. */
 export const rad = d => d * Math.PI / 180;
 export const norm = a => ((a % 360) + 360) % 360;

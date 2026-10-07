@@ -1,14 +1,15 @@
-import {trackStyle} from './track-style.js?v=d4452c6508974d83';
-import {isScenery} from './scenery-geometry.js?v=d4452c6508974d83';
-import {createScenery3D} from './scenery3d.js?v=d4452c6508974d83';
-import {layoutConnections} from './closures.js?v=d4452c6508974d83';
+import {embankmentMesh} from './embankment.js?v=87ae808bfa10375d';
+import {trackStyle} from './track-style.js?v=87ae808bfa10375d';
+import {isScenery} from './scenery-geometry.js?v=87ae808bfa10375d';
+import {createScenery3D} from './scenery3d.js?v=87ae808bfa10375d';
+import {layoutConnections} from './closures.js?v=87ae808bfa10375d';
 import * as THREE from './lib/three/three.module.js';
 import {OrbitControls} from './lib/three/OrbitControls.js';
-import {boardOutline} from './board.js?v=d4452c6508974d83';
-import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=d4452c6508974d83';
-import {elevatedPaths} from './elevation.js?v=d4452c6508974d83';
-import {worldGeometry} from './geometry.js?v=d4452c6508974d83';
-import {buildingSize} from './buildings.js?v=d4452c6508974d83';
+import {boardOutline} from './board.js?v=87ae808bfa10375d';
+import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=87ae808bfa10375d';
+import {elevatedPaths} from './elevation.js?v=87ae808bfa10375d';
+import {worldGeometry} from './geometry.js?v=87ae808bfa10375d';
+import {buildingSize} from './buildings.js?v=87ae808bfa10375d';
 export function createViewer(host,status){
  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#e9eee9');renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;host.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','沙盘 3D 视图：拖动旋转，滚轮缩放，右键平移');renderer.domElement.tabIndex=0;
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,1,1,2000000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.maxPolarAngle=Math.PI*.86;controls.screenSpacePanning=true;
@@ -29,10 +30,16 @@ export function createViewer(host,status){
   const beds=[],rails=[],ties=[],supports=[],houses=[],roofs=[],trackBuckets=new Map();let trackCount=0;
   const box=(out,x,y,z,w,d,h)=>{const v=[{x,y,z},{x:x+w,y,z},{x:x+w,y:y+d,z},{x,y:y+d,z},{x,y,z:z+h},{x:x+w,y,z:z+h},{x:x+w,y:y+d,z:z+h},{x,y:y+d,z:z+h}];for(const [a,b,c,e] of [[0,1,5,4],[1,2,6,5],[2,3,7,6],[3,0,4,7],[4,5,6,7]]){tri(out,v[a],v[b],v[c]);tri(out,v[a],v[c],v[e]);}};
   for(const q of p.pieces){if(!layerVisible(q,p.layers))continue;const part=byId[q.partId];if(isScenery(part)){group.add(createScenery3D(part,q));continue;}if(part.kind==='building'){const d=buildingSize(part,q),corners=worldGeometry(part,q).paths[0]?.points.slice(0,4);if(!d||!corners)continue;const h=d.height||40,z=q.z||0,low=corners.map(v=>({...v,z})),high=corners.map(v=>({...v,z:z+h}));for(let i=0;i<4;i++){const j=(i+1)%4;tri(houses,low[i],low[j],high[j]);tri(houses,low[i],high[j],high[i]);}tri(roofs,high[0],high[1],high[2]);tri(roofs,high[0],high[2],high[3]);continue;}
-   const style=trackStyle(part),styleKey=style.type+part.brand+part.scale;if(!trackBuckets.has(styleKey))trackBuckets.set(styleKey,{style,bed:[],ties:[],edge:[],inner:[]});const bucket=trackBuckets.get(styleKey);trackCount++;const gradient=worldSlopeGradient(q),gauge=part.scale==='HO'?16.5:9;for(const path of elevatedPaths(part,q,25)){const pts=path.points;ribbon(bucket.bed,pts,style.width,0,1,gradient);if(style.type==='embankment')ribbon(bucket.inner,pts,gauge+16,0,1.5,gradient);if(['wide','viaduct','bridge','adapter'].includes(style.type))for(const side of [-1,1])ribbon(bucket.edge,pts,style.type==='wide'?1.4:2.5,side*(style.width/2-2),style.type==='viaduct'||style.type==='bridge'?6:1.6,gradient);ribbon(rails,pts,1.6,-gauge/2,3,gradient);ribbon(rails,pts,1.6,gauge/2,3,gradient);let traveled=0,nextTie=0,nextPier=70;
+   const style=trackStyle(part),styleKey=style.type+part.brand+part.scale;if(!trackBuckets.has(styleKey))trackBuckets.set(styleKey,{style,bed:[],ties:[],edge:[],inner:[]});const bucket=trackBuckets.get(styleKey);
+   if(style.type==='embankment'){
+    const paths=elevatedPaths(part,q,12),spacing=part.geometry.spacing||0,paired=paths.length===2&&part.geometry.type.startsWith('double');
+    const routes=paired?[paths[0].points.map((a,i)=>{const b=paths[1].points[i];return b?{x:(a.x+b.x)/2,y:(a.y+b.y)/2,z:(a.z+b.z)/2}:a;})]:paths.map(path=>path.points);
+    for(const route of routes){const berm=embankmentMesh(route,{topWidth:paired?28+spacing:28,shoulder:20,ground:(x,y)=>terrainHeight(terrain,x,y)});mesh(berm.faces,'#899779');if(berm.seams.length){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(berm.seams,3));group.add(new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:'#64715f'})));}}
+   }
+   trackCount++;const gradient=worldSlopeGradient(q),gauge=part.scale==='HO'?16.5:9;for(const path of elevatedPaths(part,q,25)){const pts=path.points;ribbon(bucket.bed,pts,style.type==='embankment'?28:style.width,0,1,gradient);if(style.type==='embankment')ribbon(bucket.inner,pts,gauge+16,0,1.5,gradient);if(['wide','viaduct','bridge','adapter'].includes(style.type))for(const side of [-1,1])ribbon(bucket.edge,pts,style.type==='wide'?1.4:2.5,side*(style.width/2-2),style.type==='viaduct'||style.type==='bridge'?6:1.6,gradient);ribbon(rails,pts,1.6,-gauge/2,3,gradient);ribbon(rails,pts,1.6,gauge/2,3,gradient);let traveled=0,nextTie=0,nextPier=70;
     for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],length=Math.hypot(b.x-a.x,b.y-a.y);if(!length)continue;const nx=-(b.y-a.y)/length,ny=(b.x-a.x)/length;
      for(;nextTie<=traveled+length;nextTie+=p.pieces.length>800?24:9){const f=(nextTie-traveled)/length,x=a.x+(b.x-a.x)*f,y=a.y+(b.y-a.y)*f,z=a.z+(b.z-a.z)*f;const half=gauge/2+3,crossRise=(gradient.x*nx+gradient.y*ny)*half;if(style.type!=='tram')ribbon(bucket.ties,[{x:x-nx*half,y:y-ny*half,z:z-crossRise},{x:x+nx*half,y:y+ny*half,z:z+crossRise}],2.4,0,2,gradient);}
-     for(;nextPier<=traveled+length;nextPier+=140){const f=(nextPier-traveled)/length,x=a.x+(b.x-a.x)*f,y=a.y+(b.y-a.y)*f,z=a.z+(b.z-a.z)*f,ground=terrainHeight(terrain,x,y);if(z-ground>15)box(supports,x-5,y-5,ground,10,10,z-ground);}
+     for(;nextPier<=traveled+length;nextPier+=140){const f=(nextPier-traveled)/length,x=a.x+(b.x-a.x)*f,y=a.y+(b.y-a.y)*f,z=a.z+(b.z-a.z)*f,ground=terrainHeight(terrain,x,y);if(style.type!=='embankment'&&z-ground>15)box(supports,x-5,y-5,ground,10,10,z-ground);}
      traveled+=length;
     }
    }

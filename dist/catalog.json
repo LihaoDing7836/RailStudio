@@ -16502,8 +16502,10 @@
       "appearance": "embankment",
       "notes": [
         "套装 91045 内单节组件 C1641-5-EM，每套含 2 节；清单数量按放置节数统计。",
-        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
-      ]
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。",
+        "新增默认轨面抬高 30 mm（预览值，可改）；旧方案高度保持不变。堤坝随轨面高度延伸到地形。"
+      ],
+      "defaultElevation": 30
     },
     {
       "id": "TOMIX-N-91045-CR1641-5-EM",
@@ -16525,8 +16527,10 @@
       "appearance": "embankment",
       "notes": [
         "套装 91045 内单节组件 CR1641-5-EM，每套含 2 节；清单数量按放置节数统计。",
-        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
-      ]
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。",
+        "新增默认轨面抬高 30 mm（预览值，可改）；旧方案高度保持不变。堤坝随轨面高度延伸到地形。"
+      ],
+      "defaultElevation": 30
     },
     {
       "id": "TOMIX-N-91045-CL1641-5-EM",
@@ -16548,8 +16552,10 @@
       "appearance": "embankment",
       "notes": [
         "套装 91045 内单节组件 CL1641-5-EM，每套含 2 节；清单数量按放置节数统计。",
-        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
-      ]
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。",
+        "新增默认轨面抬高 30 mm（预览值，可改）；旧方案高度保持不变。堤坝随轨面高度延伸到地形。"
+      ],
+      "defaultElevation": 30
     },
     {
       "id": "TOMIX-N-91045-S140-EM",
@@ -16570,8 +16576,10 @@
       "appearance": "embankment",
       "notes": [
         "套装 91045 内单节组件 S140-EM，每套含 1 节；清单数量按放置节数统计。",
-        "S140 普通直轨搭配套装内 S140-EM 道床与堤坝表示，未虚构独立销售编号。"
-      ]
+        "S140 普通直轨搭配套装内 S140-EM 道床与堤坝表示，未虚构独立销售编号。",
+        "新增默认轨面抬高 30 mm（预览值，可改）；旧方案高度保持不变。堤坝随轨面高度延伸到地形。"
+      ],
+      "defaultElevation": 30
     },
     {
       "id": "TOMIX-N-91046-C1641-5-EM",
@@ -16593,12 +16601,182 @@
       "appearance": "embankment",
       "notes": [
         "套装 91046 内单节组件 C1641-5-EM，每套含 6 节；清单数量按放置节数统计。",
-        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。"
-      ]
+        "EM 为堤坝轨，CR/CL 为超高过渡型号；使用翻转调整铺设方向。平面半径与角度按官方规格，未模拟约 4° 横向超高；轨面标高由楼层控制，堤坝外轮廓为示意。",
+        "新增默认轨面抬高 30 mm（预览值，可改）；旧方案高度保持不变。堤坝随轨面高度延伸到地形。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-91047-C1604-5-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91047",
+      "name": "築堤 堤坝 C1604-5-EM",
+      "label": "C1604-5-EM",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91047.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1604,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": 6,
+      "appearance": "embankment",
+      "notes": [
+        "原装曲线轨，每套 6 节；与 C1641 配对，复线间距 37 mm。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-91047-C1604-5-EM-AR",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91047",
+      "name": "築堤 堤坝 C1604-5-EM · 过渡 R",
+      "label": "C1604-5-EM · 过渡 R",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91047.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1604,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": null,
+      "appearance": "embankment",
+      "notes": [
+        "由套装内 C1604 拆除相应超高零件改装；不是额外附送的轨道。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-91047-C1604-5-EM-AL",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91047",
+      "name": "築堤 堤坝 C1604-5-EM · 过渡 L",
+      "label": "C1604-5-EM · 过渡 L",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91047.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 1604,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": null,
+      "appearance": "embankment",
+      "notes": [
+        "由套装内 C1604 拆除相应超高零件改装；不是额外附送的轨道。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-ASSEMBLY-C1641-1604-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "91045/91046 + 91047",
+      "name": "築堤 堤坝 DC1641/1604-5-EM · 组合",
+      "label": "DC1641/1604-5-EM · 组合",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91047.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "doubleCurve",
+        "radius": 1641,
+        "spacing": 37,
+        "angle": 5
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": null,
+      "appearance": "embankment",
+      "notes": [
+        "复线组合示意：外轨来自 91045/91046，内轨与复线道床来自 91047；不可只购买一个套装。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-ASSEMBLY-S72.5-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "1803 + 91047",
+      "name": "築堤 堤坝 DS72.5-EM · 组合",
+      "label": "DS72.5-EM · 组合",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/91047.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "doubleStraight",
+        "length": 72.5,
+        "spacing": 37
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": null,
+      "appearance": "embankment",
+      "notes": [
+        "两节另购 S72.5（1803）搭配 91047 附带复线道床。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-ASSEMBLY-S280-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "1730 + 3228/3229",
+      "name": "築堤 堤坝 S280-WP · 堤坝组合",
+      "label": "S280-WP · 堤坝组合",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/3228.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "straight",
+        "length": 280
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": null,
+      "appearance": "embankment",
+      "notes": [
+        "另购 S280-WP 配两段 140 mm 堤坝；3228/3229 不含轨道，此条为设计组合。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
+    },
+    {
+      "id": "TOMIX-N-ASSEMBLY-DS280-EM",
+      "brand": "TOMIX",
+      "scale": "N",
+      "sku": "1730 + 3228/3229",
+      "name": "築堤 堤坝 DS280-WP · 堤坝组合",
+      "label": "DS280-WP · 堤坝组合",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/3228.html",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "doubleStraight",
+        "length": 280,
+        "spacing": 37
+      },
+      "status": "dimensions",
+      "system": "Fine Track",
+      "pack": null,
+      "appearance": "embankment",
+      "notes": [
+        "两节另购 S280-WP 配 280 mm 复线堤坝；堤坝由 140 mm 组件拼接，此条为设计组合。",
+        "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
+      ],
+      "defaultElevation": 30
     }
   ],
   "counts": {
-    "dimensions": 275,
+    "dimensions": 282,
     "library": 48,
     "approximate": 13,
     "pending": 3

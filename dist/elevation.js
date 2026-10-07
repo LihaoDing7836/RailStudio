@@ -1,7 +1,7 @@
-import {compatible} from './geometry.js?v=d4452c6508974d83';
-import {isTrack} from './scenery-geometry.js?v=d4452c6508974d83';
-import {worldGeometry,angleDiff} from './geometry.js?v=d4452c6508974d83';
-import {terrainHeight} from './elevation-schema.js?v=d4452c6508974d83';
+import {compatible} from './geometry.js?v=87ae808bfa10375d';
+import {isTrack} from './scenery-geometry.js?v=87ae808bfa10375d';
+import {worldGeometry,angleDiff} from './geometry.js?v=87ae808bfa10375d';
+import {terrainHeight} from './elevation-schema.js?v=87ae808bfa10375d';
 // Resample the same 3D geometry that is used by endpoint snapping.
 export function elevatedPaths(part,piece,step=30){return worldGeometry(part,piece).paths.map(path=>{
  const points=[];let length=0;

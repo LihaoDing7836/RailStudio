@@ -1,5 +1,5 @@
-import {closureAnalysis,acceptClosure} from './closures.js?v=d4452c6508974d83';
-import {uid} from './ids.js?v=d4452c6508974d83';
+import {closureAnalysis,acceptClosure} from './closures.js?v=87ae808bfa10375d';
+import {uid} from './ids.js?v=87ae808bfa10375d';
 const $=s=>document.querySelector(s),esc=s=>String(s??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export class ClosureUI{
  constructor(api){this.api=api;this.preview=null;$('#close-loop-btn').onclick=()=>this.open();}
