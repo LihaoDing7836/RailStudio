@@ -32,6 +32,8 @@ def apply(parts):
   if (p['brand'],p['sku']) in [('TOMIX','1529'),('KATO','20-045')] and p['scale']=='N':
    p['adapterBrands']=['KATO','TOMIX'];p['appearance']='adapter';p['label']='S35-J' if p['brand']=='TOMIX' else 'S62J'
    p['notes']=['设计器按双端可接 KATO / TOMIX 的转接件处理；实物须按厂家说明更换接头、核对道床与接口，软件兼容不代表免改装直连。']
+ import runpy
+ runpy.run_path(str(Path(__file__).with_name('plarail-and-curved-turnouts.py')))['apply'](parts)
  return parts
 
 if __name__=='__main__':

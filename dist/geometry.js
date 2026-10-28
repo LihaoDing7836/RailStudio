@@ -1,7 +1,7 @@
-import {isScenery,sceneryGeometry,validateScene} from './scenery-geometry.js?v=87ae808bfa10375d';
-import {validateClosureRecords} from './closure-schema.js?v=87ae808bfa10375d';
-import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=87ae808bfa10375d';
-import {validateOutline} from './board.js?v=87ae808bfa10375d';
+import {isScenery,sceneryGeometry,validateScene} from './scenery-geometry.js?v=6e996b231fc003be';
+import {validateClosureRecords} from './closure-schema.js?v=6e996b231fc003be';
+import {validateElevation,pieceElevation,validateSlope} from './elevation-schema.js?v=6e996b231fc003be';
+import {validateOutline} from './board.js?v=6e996b231fc003be';
 /** Geometry uses millimetres and clockwise degrees in screen coordinates. */
 export const rad = d => d * Math.PI / 180;
 export const norm = a => ((a % 360) + 360) % 360;
@@ -21,6 +21,7 @@ export function geometry(part, piece={}) {
  if(g.type==='curve')paths=[arc(R,A)];
  if(g.type==='doubleStraight')paths=[line(L),line(L,0,S)];
  if(g.type==='doubleCurve')paths=[arc(R,A),arc(R-S,A,0,S)];
+ if(g.type==='curvedTurnout')paths=[arc(R,A),arc(g.innerRadius,A)];
  if(g.type==='turnout')paths=[line(L),arc(R,A*(g.hand==='left'?-1:1))];
  if(g.type==='wye')paths=[arc(R,A),arc(R,-A)];
  if(g.type==='crossing'){const half=rad(A/2),len=L/2;paths=[line(L),line(L,L/2-len*Math.cos(rad(A)),-len*Math.sin(rad(A)),A)];}
@@ -36,8 +37,8 @@ export function geometry(part, piece={}) {
  return {paths,endpoints,length:paths.reduce((n,p)=>n+p.length,0)};
 }
 export const pathData=points=>points.map((p,i)=>`${i?'L':'M'}${p.x.toFixed(3)},${p.y.toFixed(3)}`).join(' ');
-export function worldGeometry(part,piece){const g=geometry(part,piece);return {...g,paths:g.paths.map(path=>{const ds=[0];for(let i=1;i<path.points.length;i++)ds.push(ds.at(-1)+Math.hypot(path.points[i].x-path.points[i-1].x,path.points[i].y-path.points[i-1].y));const length=ds.at(-1)||1;return {...path,points:path.points.map((q,i)=>({...transform(q,piece),z:pieceElevation(piece,q,ds[i]/length)}))};}),endpoints:g.endpoints.map((e,i)=>({...transform(e,piece),z:pieceElevation(piece,e,g.paths.some(p=>p.start&&Math.hypot(p.start.x-e.x,p.start.y-e.y)<.001)?0:1),pieceId:piece.id,index:i,brand:part.brand,adapterBrands:part.adapterBrands,scale:part.scale,connector:part.geometry.type==='flex'?'bare':'standard'}))};}
-export function compatible(a,b){return (a.brand===b.brand||a.adapterBrands?.includes(b.brand)||b.adapterBrands?.includes(a.brand))&&a.scale===b.scale&&(a.connector||'standard')===(b.connector||'standard')&&Math.abs((a.z||0)-(b.z||0))<.5;}
+export function worldGeometry(part,piece){const g=geometry(part,piece);return {...g,paths:g.paths.map(path=>{const ds=[0];for(let i=1;i<path.points.length;i++)ds.push(ds.at(-1)+Math.hypot(path.points[i].x-path.points[i-1].x,path.points[i].y-path.points[i-1].y));const length=ds.at(-1)||1;return {...path,points:path.points.map((q,i)=>({...transform(q,piece),z:pieceElevation(piece,q,ds[i]/length)}))};}),endpoints:g.endpoints.map((e,i)=>({...transform(e,piece),z:pieceElevation(piece,e,g.paths.some(p=>p.start&&Math.hypot(p.start.x-e.x,p.start.y-e.y)<.001)?0:1),pieceId:piece.id,index:i,brand:part.brand,adapterBrands:part.adapterBrands,scale:part.scale,connector:part.geometry.type==='flex'?'bare':'standard',plug:part.plugs?.[i]}))};}
+export function compatible(a,b){return (a.brand===b.brand||a.adapterBrands?.includes(b.brand)||b.adapterBrands?.includes(a.brand))&&a.scale===b.scale&&(!a.plug||!b.plug||a.plug!==b.plug)&&(a.connector||'standard')===(b.connector||'standard')&&Math.abs((a.z||0)-(b.z||0))<.5;}
 export function connections(pieces,byId,tolerance=.6){
  const endpoints=pieces.flatMap(p=>worldGeometry(byId[p.partId],p).endpoints),connected=new Set(),pairs=[],grid=new Map();
  for(let i=0;i<endpoints.length;i++){const a=endpoints[i],gx=Math.floor(a.x/tolerance),gy=Math.floor(a.y/tolerance);let match=-1;

@@ -1,10 +1,10 @@
 // Appearance widths are drawing conventions, not manufacturer clearance envelopes.
-import {pathData} from './geometry.js?v=87ae808bfa10375d';
+import {pathData} from './geometry.js?v=6e996b231fc003be';
 export function trackStyle(part){
- const n=(part.name||'')+' '+(part.label||''),gauge=part.scale==='HO'?16.5:9;
+ const n=(part.name||'')+' '+(part.label||''),gauge=part.brand==='PLARAIL'?26:part.scale==='HO'?16.5:9;
  const type=part.appearance||(/築堤|\bEM\b/.test(n)?'embankment':/スラブ|スラブ|SL/.test(n)?'slab':/鉄橋|トラス|ガーダー/.test(n)?'bridge':/高架/.test(n)?'viaduct':/ワイド|-WP|－WP/.test(n)?'wide':/トラム|-WT/.test(n)?'tram':/PC|コンクリート/.test(n)?'pc':'standard');
- const styles={standard:['普通轨','',gauge+13,'#c9c1ae','#776b54'],pc:['PC 枕木轨','PC',gauge+13,'#b7c3c5','#e9eeea'],wide:['WP 宽版轨','WP',37,'#c1d1db','#f1f4ef'],slab:['板式轨','SL',gauge+22,'#c8c4d5','#827e97'],viaduct:['高架轨','高架',gauge+24,'#d2d4d1','#9ba5a4'],bridge:['桥梁轨','桥梁',gauge+24,'#b0c2b9','#667b71'],embankment:['EM 堤坝轨','EM',62,'#a6ba8c','#796e54'],tram:['路面轨','路面',37,'#abb4b8','#a2abad'],adapter:['跨品牌转接轨','转接',gauge+15,'#e5c68e','#a07842']};
- const [name,tag,width,bed,tie]=styles[type]||styles.standard;return {type,name,tag,width,bed,tie,gauge,rail:part.brand==='TOMIX'?'#3e6481':'#345747'};
+ const styles={plarail:['普乐乐路塑料轨','',40,'#2684e8','#57a4ef'],plarailElevated:['普乐乐路高架轨','高架',46,'#b5c1cd','#dae2e8'],standard:['普通轨','',gauge+13,'#c9c1ae','#776b54'],pc:['PC 枕木轨','PC',gauge+13,'#b7c3c5','#e9eeea'],wide:['WP 宽版轨','WP',37,'#c1d1db','#f1f4ef'],slab:['板式轨','SL',gauge+22,'#c8c4d5','#827e97'],viaduct:['高架轨','高架',gauge+24,'#d2d4d1','#9ba5a4'],bridge:['桥梁轨','桥梁',gauge+24,'#b0c2b9','#667b71'],embankment:['EM 堤坝轨','EM',62,'#a6ba8c','#796e54'],tram:['路面轨','路面',37,'#abb4b8','#a2abad'],adapter:['跨品牌转接轨','转接',gauge+15,'#e5c68e','#a07842']};
+ const [name,tag,width,bed,tie]=styles[type]||styles.standard;return {type,name,tag,width,bed,tie,gauge,rail:part.brand==='PLARAIL'?'#1756a0':part.brand==='TOMIX'?'#3e6481':'#345747'};
 }
 export function offsetTrack(points,d){return points.map((p,i)=>{const a=points[Math.max(0,i-1)],b=points[Math.min(points.length-1,i+1)],L=Math.hypot(b.x-a.x,b.y-a.y)||1;return {x:p.x-(b.y-a.y)/L*d,y:p.y+(b.x-a.x)/L*d};});}
 export function trackSurfaceMarkup(part,paths,selected=false){const v=trackStyle(part);let out='';
@@ -13,7 +13,7 @@ export function trackSurfaceMarkup(part,paths,selected=false){const v=trackStyle
  for(const p of paths){if(selected)out+=stroke(p.points,'#d79040',v.width+4);out+=stroke(p.points,v.bed,v.width);
   if(v.type==='embankment'){out+=stroke(p.points,'#768d64',v.width-4,'2 5');out+=stroke(p.points,'#c9c1ae',v.gauge+16);}
   if(v.type==='wide')for(const d of [-v.width/2+2,v.width/2-2])out+=stroke(offsetTrack(p.points,d),'#edf5f7',1.4);
-  if(['viaduct','bridge'].includes(v.type))for(const d of [-v.width/2+1,v.width/2-1]){out+=stroke(offsetTrack(p.points,d),'#6e8585',3);if(v.type==='bridge')out+=stroke(offsetTrack(p.points,d),'#dae5dd',1.8,'4 6');}
+  if(['viaduct','bridge','plarailElevated'].includes(v.type))for(const d of [-v.width/2+1,v.width/2-1]){out+=stroke(offsetTrack(p.points,d),'#6e8585',3);if(v.type==='bridge')out+=stroke(offsetTrack(p.points,d),'#dae5dd',1.8,'4 6');}
   if(v.type==='slab')out+=stroke(p.points,'#a8a4ba',v.gauge+9,'22 3');
   if(v.type==='adapter')for(const sign of [-1,1])out+=stroke(offsetTrack(p.points,sign*(v.width/2-2)),'#ae783b',2,'5 3');
  }

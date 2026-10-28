@@ -75,6 +75,8 @@ for p in data['parts']:
  delta=max(min(math.hypot(e['x']-q['x'],e['y']-q['y']) for q in ends) for e in p['geometry']['endpoints'])
  if delta>.6:
   p['status']='approximate';p['notes'].append(f'源参数端点与曲线有约 {delta:.2f} mm 偏差，当前以显式端点吸附；施工前需复核。')
+import runpy
+runpy.run_path(str(__import__('pathlib').Path(__file__).with_name('plarail-and-curved-turnouts.py')))['apply'](data['parts'])
 data['counts']={s:sum(p['status']==s for p in data['parts']) for s in ['dimensions','library','approximate','pending']}
 data['geometryAttribution']='Additional geometry: XTrackCAD parameter library, Dwyane Ward, Dave Bullis and contributors. GPL-2.0. Converted to mm on 2026-09-26; raw sources and license included.'
 f.write_text(json.dumps(data,ensure_ascii=False,indent=2));print('Imported',len(updated),'geometries');print(data['counts']);print('Remaining:');print('\n'.join(p['brand']+' '+p['sku']+' '+p['name'] for p in data['parts'] if p['status']=='pending'))

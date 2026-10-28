@@ -76,3 +76,11 @@ Register-ScheduledTask -TaskName 'ZhenxingTrainCatalogue' -Action $action -Trigg
 `python3 -m unittest discover -s tests -p 'test_*.py'`：官网解析器的车辆/配件排除、乘数与换行编组、SKU 价格对应。
 
 浏览器检查记录与截图保存在忽略提交的 `test-results/`。Windows IIS 的实际服务器任务需部署后在服务器上验证。
+
+### 2026-10-28：曲线道岔与普乐乐路
+
+- TOMIX 1278/1279：旧 XTrackCAD 参数的两个出口为 44°/46°，接轨会产生方向偏差。现按[官方 R317/R280、45° 名义规格](https://www.tomytec.co.jp/tomix/products/n/1278.html)建立 `curvedTurnout`。两出口方向相同；各续接同半径 45° 后，横向间距为 37 mm，纵向错位也为 37 mm。它是规划近似，不是厂家 CAD，也没有声称实物的岔心/过渡段是两条纯圆弧。旧方案保留零件位置，后续连接需重新吸附。
+- 普乐乐路（TAKARA TOMY Plarail）：独立品牌、独立规格，首批 16 个常用条目。产品身份与角度来自[官方目录](https://www.takaratomy.co.jp/products/plarail/lineup/rail/)；直轨 216 mm 来自[官方 FAQ](https://faq.takaratomy.co.jp/detail.aspx?a=102&id=15000&isCrawler=1)，半长/倍长/四分之一轨按比例换算。[高架直轨/弯轨与基本轨的对应关系](https://www.takaratomy.co.jp/products/plarail/new_a/0801.htm)用于 R-26/R-27。
+- 基本曲轨 R216、复线间距 60 mm、R-11 分岔形状均是**规划参考值**，不是已经查到的官方尺寸图；这些条目标为 `approximate`，卡片、规格标注和属性均提示。40 mm 塑料道床宽度、26 mm 槽距属于外观示意。首批未覆盖全部特殊轨道。
+- R-20 分为凹凸、双凹、双凸三种组件；普通单线只允许异性接头吸附。复线、道岔接头尚未验证，只检查几何；库中明确提示。Plarail 不与 N/HO 系统吸附。高架高度由楼层设置，不假定厂商桥墩高度。
+- `scripts/plarail-and-curved-turnouts.py` 可幂等更新目录；完整目录生成及 XTrackCAD 导入后均应用此补丁，防止重新导入旧角度。

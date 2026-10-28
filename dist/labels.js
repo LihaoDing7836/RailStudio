@@ -1,12 +1,13 @@
-import {trackStyle} from './track-style.js?v=87ae808bfa10375d';
-import {isTrack} from './scenery-geometry.js?v=87ae808bfa10375d';
-import {worldGeometry} from './geometry.js?v=87ae808bfa10375d';
+import {trackStyle} from './track-style.js?v=6e996b231fc003be';
+import {isTrack} from './scenery-geometry.js?v=6e996b231fc003be';
+import {worldGeometry} from './geometry.js?v=6e996b231fc003be';
 
 const number=n=>Number(n.toFixed(1)).toString();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
 export function trackSpecification(part,piece){const text=baseSpecification(part,piece),tag=trackStyle(part).tag;return tag&&!text.includes(tag)?`${text} · ${tag}`:text;}
 function baseSpecification(part,piece){
  const g=part.geometry,L=piece.length??g.length;
+ if(part.brand==='PLARAIL')return part.label;
  if(part.appearance==='embankment')return part.label;
  if(g.type==='curve'||g.type==='doubleCurve')return `${g.type==='doubleCurve'?'D':''}R${number(g.radius)}${g.type==='doubleCurve'?'/'+number(g.radius-g.spacing):''}–${number(g.angle)}°`;
  if(g.type==='flex')return `柔性轨 ${number(L)}mm / ${number(piece.bend||0)}°`;

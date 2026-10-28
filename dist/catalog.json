@@ -14926,346 +14926,19 @@
       "source": "https://www.tomytec.co.jp/tomix/products/info/?q=1278",
       "category": "道岔",
       "geometry": {
-        "type": "custom",
-        "paths": [
-          {
-            "points": [
-              {
-                "x": 0.0,
-                "y": 0.0
-              },
-              {
-                "x": 8.99922,
-                "y": 0.0
-              }
-            ],
-            "start": {
-              "x": 0.0,
-              "y": 0.0,
-              "angle": 180.0
-            },
-            "end": {
-              "x": 8.99922,
-              "y": 0.0,
-              "angle": 0.0
-            },
-            "length": 8.99922
-          },
-          {
-            "points": [
-              {
-                "x": 186.952276,
-                "y": -75.536591
-              },
-              {
-                "x": 180.846488,
-                "y": -69.430803
-              },
-              {
-                "x": 174.531331,
-                "y": -63.541824
-              },
-              {
-                "x": 168.014499,
-                "y": -57.876828
-              },
-              {
-                "x": 161.303931,
-                "y": -52.442718
-              },
-              {
-                "x": 154.407804,
-                "y": -47.246113
-              },
-              {
-                "x": 147.334518,
-                "y": -42.293345
-              },
-              {
-                "x": 140.092692,
-                "y": -37.590448
-              },
-              {
-                "x": 132.691149,
-                "y": -33.143153
-              },
-              {
-                "x": 125.138907,
-                "y": -28.956876
-              },
-              {
-                "x": 117.445166,
-                "y": -25.036719
-              },
-              {
-                "x": 109.6193,
-                "y": -21.387458
-              },
-              {
-                "x": 101.670845,
-                "y": -18.013539
-              },
-              {
-                "x": 93.609483,
-                "y": -14.919072
-              },
-              {
-                "x": 85.445037,
-                "y": -12.107828
-              },
-              {
-                "x": 77.187453,
-                "y": -9.583231
-              },
-              {
-                "x": 68.846792,
-                "y": -7.348358
-              },
-              {
-                "x": 60.433216,
-                "y": -5.405931
-              },
-              {
-                "x": 51.956976,
-                "y": -3.758317
-              },
-              {
-                "x": 43.428399,
-                "y": -2.407523
-              },
-              {
-                "x": 34.857875,
-                "y": -1.355195
-              },
-              {
-                "x": 26.255846,
-                "y": -0.602615
-              },
-              {
-                "x": 17.632792,
-                "y": -0.1507
-              },
-              {
-                "x": 8.99922,
-                "y": 0.0
-              }
-            ],
-            "start": {
-              "x": 186.952276,
-              "y": -75.536591,
-              "angle": 315.0000000000001
-            },
-            "end": {
-              "x": 8.99922,
-              "y": 0.0,
-              "angle": 178.99999707969837
-            },
-            "length": 198.6124912080424
-          },
-          {
-            "points": [
-              {
-                "x": 186.95228,
-                "y": -75.536603
-              },
-              {
-                "x": 196.528461,
-                "y": -85.453017
-              }
-            ],
-            "start": {
-              "x": 186.95228,
-              "y": -75.536603,
-              "angle": 134.0000338256948
-            },
-            "end": {
-              "x": 196.528461,
-              "y": -85.453017,
-              "angle": 314.0000338256948
-            },
-            "length": 13.785445555518214
-          },
-          {
-            "points": [
-              {
-                "x": 219.265613,
-                "y": -82.669619
-              },
-              {
-                "x": 211.746305,
-                "y": -75.657751
-              },
-              {
-                "x": 203.986867,
-                "y": -68.912574
-              },
-              {
-                "x": 195.996752,
-                "y": -62.442306
-              },
-              {
-                "x": 187.785696,
-                "y": -56.254832
-              },
-              {
-                "x": 179.363701,
-                "y": -50.357688
-              },
-              {
-                "x": 170.74103,
-                "y": -44.75806
-              },
-              {
-                "x": 161.928188,
-                "y": -39.46277
-              },
-              {
-                "x": 152.935911,
-                "y": -34.478269
-              },
-              {
-                "x": 143.775155,
-                "y": -29.810631
-              },
-              {
-                "x": 134.457081,
-                "y": -25.465542
-              },
-              {
-                "x": 124.993043,
-                "y": -21.448296
-              },
-              {
-                "x": 115.39457,
-                "y": -17.763787
-              },
-              {
-                "x": 105.673356,
-                "y": -14.416505
-              },
-              {
-                "x": 95.841246,
-                "y": -11.410527
-              },
-              {
-                "x": 85.910218,
-                "y": -8.749516
-              },
-              {
-                "x": 75.892372,
-                "y": -6.436714
-              },
-              {
-                "x": 65.799913,
-                "y": -4.474939
-              },
-              {
-                "x": 55.645137,
-                "y": -2.86658
-              },
-              {
-                "x": 45.440416,
-                "y": -1.613598
-              },
-              {
-                "x": 35.198183,
-                "y": -0.717519
-              },
-              {
-                "x": 24.930917,
-                "y": -0.179434
-              },
-              {
-                "x": 14.651126,
-                "y": 0.0
-              }
-            ],
-            "start": {
-              "x": 219.265613,
-              "y": -82.669619,
-              "angle": 317.0000006004108
-            },
-            "end": {
-              "x": 14.651126,
-              "y": 0.0,
-              "angle": 179.00000233661052
-            },
-            "length": 226.20132764649375
-          },
-          {
-            "points": [
-              {
-                "x": 219.265627,
-                "y": -82.669634
-              },
-              {
-                "x": 225.739122,
-                "y": -88.921006
-              }
-            ],
-            "start": {
-              "x": 219.265627,
-              "y": -82.669634,
-              "angle": 136.00004330382262
-            },
-            "end": {
-              "x": 225.739122,
-              "y": -88.921006,
-              "angle": 316.0000433038226
-            },
-            "length": 8.999210204649183
-          },
-          {
-            "points": [
-              {
-                "x": 8.99922,
-                "y": 0.0
-              },
-              {
-                "x": 14.651126,
-                "y": 0.0
-              }
-            ],
-            "start": {
-              "x": 8.99922,
-              "y": 0.0,
-              "angle": 180.0
-            },
-            "end": {
-              "x": 14.651126,
-              "y": 0.0,
-              "angle": 0.0
-            },
-            "length": 5.6519064
-          }
-        ],
-        "endpoints": [
-          {
-            "x": 0.0,
-            "y": 0.0,
-            "angle": 180.0
-          },
-          {
-            "x": 225.739122,
-            "y": -88.921006,
-            "angle": 316.0
-          },
-          {
-            "x": 196.528461,
-            "y": -85.453017,
-            "angle": 314.0
-          }
-        ]
+        "type": "curvedTurnout",
+        "radius": 317,
+        "innerRadius": 280,
+        "angle": -45
       },
-      "status": "library",
+      "status": "approximate",
       "notes": [
-        "几何来自 XTrackCAD 开源参数库（非厂商认证）；端点按库中独立定义建模。"
+        "按官方 R317/R280、45° 规格重建名义规划曲线，两个出口方向一致，继续相同半径至 90° 时形成 37 mm 横向间距。",
+        "替代旧参数库 44°/46° 出口，非厂家精密 CAD；未模拟实物分岔过渡及接头余量。旧方案中已接上的后续轨道需重新吸附。"
       ],
       "pack": null,
       "system": "Fine Track",
-      "label": "電動ポイントN-CPR317/280-45",
-      "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Tomix%20Track.xtp",
-      "libraryName": "Tomix Fine Track\tTurnout 317/280mm Curve-R45 (elec)\t1278"
+      "label": "電動ポイントN-CPR317/280-45"
     },
     {
       "id": "TOMIX-N-1279",
@@ -15276,346 +14949,19 @@
       "source": "https://www.tomytec.co.jp/tomix/products/info/?q=1279",
       "category": "道岔",
       "geometry": {
-        "type": "custom",
-        "paths": [
-          {
-            "points": [
-              {
-                "x": 0.0,
-                "y": 0.0
-              },
-              {
-                "x": 8.99922,
-                "y": 0.0
-              }
-            ],
-            "start": {
-              "x": 0.0,
-              "y": 0.0,
-              "angle": 180.0
-            },
-            "end": {
-              "x": 8.99922,
-              "y": 0.0,
-              "angle": 0.0
-            },
-            "length": 8.99922
-          },
-          {
-            "points": [
-              {
-                "x": 8.99922,
-                "y": 0.0
-              },
-              {
-                "x": 17.632792,
-                "y": 0.1507
-              },
-              {
-                "x": 26.255846,
-                "y": 0.602615
-              },
-              {
-                "x": 34.857875,
-                "y": 1.355195
-              },
-              {
-                "x": 43.428399,
-                "y": 2.407523
-              },
-              {
-                "x": 51.956976,
-                "y": 3.758317
-              },
-              {
-                "x": 60.433216,
-                "y": 5.405931
-              },
-              {
-                "x": 68.846792,
-                "y": 7.348358
-              },
-              {
-                "x": 77.187453,
-                "y": 9.583231
-              },
-              {
-                "x": 85.445037,
-                "y": 12.107828
-              },
-              {
-                "x": 93.609483,
-                "y": 14.919072
-              },
-              {
-                "x": 101.670845,
-                "y": 18.013539
-              },
-              {
-                "x": 109.6193,
-                "y": 21.387458
-              },
-              {
-                "x": 117.445166,
-                "y": 25.036719
-              },
-              {
-                "x": 125.138907,
-                "y": 28.956876
-              },
-              {
-                "x": 132.691149,
-                "y": 33.143153
-              },
-              {
-                "x": 140.092692,
-                "y": 37.590448
-              },
-              {
-                "x": 147.334518,
-                "y": 42.293345
-              },
-              {
-                "x": 154.407804,
-                "y": 47.246113
-              },
-              {
-                "x": 161.303931,
-                "y": 52.442718
-              },
-              {
-                "x": 168.014499,
-                "y": 57.876828
-              },
-              {
-                "x": 174.531331,
-                "y": 63.541824
-              },
-              {
-                "x": 180.846488,
-                "y": 69.430803
-              },
-              {
-                "x": 186.952276,
-                "y": 75.536591
-              }
-            ],
-            "start": {
-              "x": 8.99922,
-              "y": 0.0,
-              "angle": 181.00000292030165
-            },
-            "end": {
-              "x": 186.952276,
-              "y": 75.536591,
-              "angle": 44.999999999999936
-            },
-            "length": 198.6124912080424
-          },
-          {
-            "points": [
-              {
-                "x": 186.95228,
-                "y": 75.536603
-              },
-              {
-                "x": 196.528461,
-                "y": 85.453017
-              }
-            ],
-            "start": {
-              "x": 186.95228,
-              "y": 75.536603,
-              "angle": 225.9999661743052
-            },
-            "end": {
-              "x": 196.528461,
-              "y": 85.453017,
-              "angle": 45.99996617430521
-            },
-            "length": 13.785445555518214
-          },
-          {
-            "points": [
-              {
-                "x": 14.651126,
-                "y": 0.0
-              },
-              {
-                "x": 24.930917,
-                "y": 0.179434
-              },
-              {
-                "x": 35.198183,
-                "y": 0.717519
-              },
-              {
-                "x": 45.440416,
-                "y": 1.613598
-              },
-              {
-                "x": 55.645137,
-                "y": 2.86658
-              },
-              {
-                "x": 65.799913,
-                "y": 4.474939
-              },
-              {
-                "x": 75.892372,
-                "y": 6.436714
-              },
-              {
-                "x": 85.910218,
-                "y": 8.749516
-              },
-              {
-                "x": 95.841246,
-                "y": 11.410527
-              },
-              {
-                "x": 105.673356,
-                "y": 14.416505
-              },
-              {
-                "x": 115.39457,
-                "y": 17.763787
-              },
-              {
-                "x": 124.993043,
-                "y": 21.448296
-              },
-              {
-                "x": 134.457081,
-                "y": 25.465542
-              },
-              {
-                "x": 143.775155,
-                "y": 29.810631
-              },
-              {
-                "x": 152.935911,
-                "y": 34.478269
-              },
-              {
-                "x": 161.928188,
-                "y": 39.46277
-              },
-              {
-                "x": 170.74103,
-                "y": 44.75806
-              },
-              {
-                "x": 179.363701,
-                "y": 50.357688
-              },
-              {
-                "x": 187.785696,
-                "y": 56.254832
-              },
-              {
-                "x": 195.996752,
-                "y": 62.442306
-              },
-              {
-                "x": 203.986867,
-                "y": 68.912574
-              },
-              {
-                "x": 211.746305,
-                "y": 75.657751
-              },
-              {
-                "x": 219.265613,
-                "y": 82.669619
-              }
-            ],
-            "start": {
-              "x": 14.651126,
-              "y": 0.0,
-              "angle": 180.99999766338948
-            },
-            "end": {
-              "x": 219.265613,
-              "y": 82.669619,
-              "angle": 42.99999939958925
-            },
-            "length": 226.20132764649375
-          },
-          {
-            "points": [
-              {
-                "x": 219.265627,
-                "y": 82.669634
-              },
-              {
-                "x": 225.739122,
-                "y": 88.921006
-              }
-            ],
-            "start": {
-              "x": 219.265627,
-              "y": 82.669634,
-              "angle": 223.99995669617738
-            },
-            "end": {
-              "x": 225.739122,
-              "y": 88.921006,
-              "angle": 43.99995669617739
-            },
-            "length": 8.999210204649183
-          },
-          {
-            "points": [
-              {
-                "x": 8.99922,
-                "y": 0.0
-              },
-              {
-                "x": 14.651126,
-                "y": 0.0
-              }
-            ],
-            "start": {
-              "x": 8.99922,
-              "y": 0.0,
-              "angle": 180.0
-            },
-            "end": {
-              "x": 14.651126,
-              "y": 0.0,
-              "angle": 0.0
-            },
-            "length": 5.6519064
-          }
-        ],
-        "endpoints": [
-          {
-            "x": 0.0,
-            "y": 0.0,
-            "angle": 180.0
-          },
-          {
-            "x": 225.739122,
-            "y": 88.921006,
-            "angle": 44.0
-          },
-          {
-            "x": 196.528461,
-            "y": 85.453017,
-            "angle": 46.0
-          }
-        ]
+        "type": "curvedTurnout",
+        "radius": 317,
+        "innerRadius": 280,
+        "angle": 45
       },
-      "status": "library",
+      "status": "approximate",
       "notes": [
-        "几何来自 XTrackCAD 开源参数库（非厂商认证）；端点按库中独立定义建模。"
+        "按官方 R317/R280、45° 规格重建名义规划曲线，两个出口方向一致，继续相同半径至 90° 时形成 37 mm 横向间距。",
+        "替代旧参数库 44°/46° 出口，非厂家精密 CAD；未模拟实物分岔过渡及接头余量。旧方案中已接上的后续轨道需重新吸附。"
       ],
       "pack": null,
       "system": "Fine Track",
-      "label": "電動ポイントN-CPL317/280-45",
-      "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Tomix%20Track.xtp",
-      "libraryName": "Tomix Fine Track\tTurnout 317/280mm Curve-L45 (elec)\t1279"
+      "label": "電動ポイントN-CPL317/280-45"
     },
     {
       "id": "TOMIX-N-1281",
@@ -16773,14 +16119,420 @@
         "轨道长度、半径按官方规格；堤坝宽度和边坡为立体示意，未模拟横向超高。新增默认轨面抬高 30 mm（预览值，可在属性修改，不是官方尺寸）。"
       ],
       "defaultElevation": 30
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-01",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-01",
+      "name": "普乐乐路 标准直轨 S216",
+      "label": "标准直轨 S216",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "直轨",
+      "geometry": {
+        "type": "straight",
+        "length": 216
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方 FAQ 确认 R-01 长 216 mm；半长、倍长按官方产品比例换算。尺寸来源：https://faq.takaratomy.co.jp/detail.aspx?a=102&id=15000&isCrawler=1",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-02",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-02",
+      "name": "普乐乐路 半直轨 S108",
+      "label": "半直轨 S108",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "直轨",
+      "geometry": {
+        "type": "straight",
+        "length": 108
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方 FAQ 确认 R-01 长 216 mm；半长、倍长按官方产品比例换算。尺寸来源：https://faq.takaratomy.co.jp/detail.aspx?a=102&id=15000&isCrawler=1",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-07",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-07",
+      "name": "普乐乐路 倍长直轨 S432",
+      "label": "倍长直轨 S432",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "直轨",
+      "geometry": {
+        "type": "straight",
+        "length": 432
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方 FAQ 确认 R-01 长 216 mm；半长、倍长按官方产品比例换算。尺寸来源：https://faq.takaratomy.co.jp/detail.aspx?a=102&id=15000&isCrawler=1",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-20-FM",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-20",
+      "name": "普乐乐路 1/4 直轨 S54 · 凹凸",
+      "label": "1/4 直轨 S54 · 凹凸",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "直轨",
+      "geometry": {
+        "type": "straight",
+        "length": 54
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方目录列出三种接口；长度按标准直轨的 1/4 换算，接口方向不影响中心线长度。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-20-FF",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-20",
+      "name": "普乐乐路 1/4 直轨 S54 · 双凹",
+      "label": "1/4 直轨 S54 · 双凹",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "直轨",
+      "geometry": {
+        "type": "straight",
+        "length": 54
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方目录列出三种接口；长度按标准直轨的 1/4 换算，接口方向不影响中心线长度。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "female",
+        "female"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-20-MM",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-20",
+      "name": "普乐乐路 1/4 直轨 S54 · 双凸",
+      "label": "1/4 直轨 S54 · 双凸",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "直轨",
+      "geometry": {
+        "type": "straight",
+        "length": 54
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方目录列出三种接口；长度按标准直轨的 1/4 换算，接口方向不影响中心线长度。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "male",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-03",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-03",
+      "name": "普乐乐路 标准弯轨 R216–45°",
+      "label": "标准弯轨 R216–45°",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "弯轨",
+      "geometry": {
+        "type": "curve",
+        "radius": 216,
+        "angle": 45
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方：8 节成圆；45° 已确认，半径采用规划参考值。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-21",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-21",
+      "name": "普乐乐路 倍角弯轨 R216–90°",
+      "label": "倍角弯轨 R216–90°",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "弯轨",
+      "geometry": {
+        "type": "curve",
+        "radius": 216,
+        "angle": 90
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方：4 节成圆；90° 已确认，半径采用规划参考值。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-04",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-04",
+      "name": "普乐乐路 复线直轨 DS216",
+      "label": "复线直轨 DS216",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "复线",
+      "geometry": {
+        "type": "doubleStraight",
+        "length": 216,
+        "spacing": 60
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "与 R-05 配合构建复线；中心线间距为规划参考值。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-05",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-05",
+      "name": "普乐乐路 复线弯轨 R276/216–45°",
+      "label": "复线弯轨 R276/216–45°",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "复线",
+      "geometry": {
+        "type": "doubleCurve",
+        "radius": 276,
+        "spacing": 60,
+        "angle": 45
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "两条同心曲线，尺寸为规划参考值。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-09",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-09",
+      "name": "普乐乐路 外侧弯轨 R276–45°",
+      "label": "外侧弯轨 R276–45°",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "弯轨",
+      "geometry": {
+        "type": "curve",
+        "radius": 276,
+        "angle": 45
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方：与 R-05 外侧相同；半径为规划参考值。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-08",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-08",
+      "name": "普乐乐路 停止轨 S216",
+      "label": "停止轨 S216",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "特殊",
+      "geometry": {
+        "type": "straight",
+        "length": 216
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "停止轨中心线示意，不模拟机械停车开关或附送车挡。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-11-L",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-11",
+      "name": "普乐乐路 分岔轨 L",
+      "label": "分岔轨 L",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "道岔",
+      "geometry": {
+        "type": "turnout",
+        "length": 216,
+        "radius": 216,
+        "angle": 45,
+        "hand": "left"
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方 R-11 包含 L/R 各一节；分岔采用简化直线与圆弧，非实测几何，凹凸接口需现场核对。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-11-R",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-11",
+      "name": "普乐乐路 分岔轨 R",
+      "label": "分岔轨 R",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "道岔",
+      "geometry": {
+        "type": "turnout",
+        "length": 216,
+        "radius": 216,
+        "angle": 45,
+        "hand": "right"
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarail",
+      "notes": [
+        "官方 R-11 包含 L/R 各一节；分岔采用简化直线与圆弧，非实测几何，凹凸接口需现场核对。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-26",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-26",
+      "name": "普乐乐路 高架直轨 S216",
+      "label": "高架直轨 S216",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "straight",
+        "length": 216
+      },
+      "status": "dimensions",
+      "system": "Plarail",
+      "appearance": "plarailElevated",
+      "notes": [
+        "官方说明与基本直轨同长；使用楼层功能设定高架标高。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
+    },
+    {
+      "id": "PLARAIL-PLARAIL-R-27",
+      "brand": "PLARAIL",
+      "scale": "PLARAIL",
+      "sku": "R-27",
+      "name": "普乐乐路 高架弯轨 R216–45°",
+      "label": "高架弯轨 R216–45°",
+      "source": "https://www.takaratomy.co.jp/products/plarail/lineup/rail/",
+      "category": "高架 / 桥梁",
+      "geometry": {
+        "type": "curve",
+        "radius": 216,
+        "angle": 45
+      },
+      "status": "approximate",
+      "system": "Plarail",
+      "appearance": "plarailElevated",
+      "notes": [
+        "官方说明与基本曲轨同曲率；使用楼层功能设定高架标高。",
+        "以毫米表示玩具实物规划尺寸，不按 N 比例缩放。外观宽度、槽距为示意；复线/道岔未校验凹凸接头，不表示可以与模型铁路连接。",
+        "规划参考：基本曲线半径 216 mm、复线间距 60 mm；厂家公开目录未提供完整尺寸图，施工前请按实物复核。"
+      ],
+      "plugs": [
+        "female",
+        "male"
+      ]
     }
   ],
   "counts": {
-    "dimensions": 282,
-    "library": 48,
-    "approximate": 13,
+    "dimensions": 289,
+    "library": 46,
+    "approximate": 24,
     "pending": 3
   },
   "geometryAttribution": "Additional geometry: XTrackCAD parameter library, Dwyane Ward, Dave Bullis and contributors. GPL-2.0. Converted to mm on 2026-09-26; raw sources and license included.",
-  "supplemented": "2026-10-07"
+  "supplemented": "2026-10-28"
 }

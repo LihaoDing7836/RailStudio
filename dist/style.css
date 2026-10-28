@@ -30,3 +30,5 @@
 #scene-draw-tools button{padding:5px 10px;border:1px solid #c8dadd;border-radius:5px;background:white}
 #scene-draw-tools .primary{background:#2f737f;color:white}
 #scene-color{min-height:32px;padding:3px;width:100%}
+
+.brands button{letter-spacing:0;padding:9px 5px;white-space:nowrap}#plarail-note{margin:0 20px 12px;font-size:11px;line-height:1.65;color:#64798c}#plarail-note[hidden]{display:none}
