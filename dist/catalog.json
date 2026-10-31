@@ -281,7 +281,7 @@
       "sku": "2-170",
       "name": "車止め線路 109mm",
       "source": "https://www.katomodels.com/product/ho/ho_unitrack_s",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 109.0,
@@ -2386,7 +2386,20 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "自動踏切S複線化セット"
+      "label": "自動踏切S複線化セット",
+      "dimensionSpecs": [
+        {
+          "name": "套装踏切轨",
+          "value": 124,
+          "unit": "mm"
+        },
+        {
+          "name": "传感器轨",
+          "value": 62,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://www.katomodels.com/unitrackplan/plan/plan06-15_partslist.pdf"
     },
     {
       "id": "KATO-N-20-875",
@@ -4190,7 +4203,7 @@
       "sku": "20-046",
       "name": "車止め線路A 62mm",
       "source": "https://unitrack.katomodels.com/products/line_single/car_stop",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 62.0,
@@ -4209,7 +4222,7 @@
       "sku": "20-047",
       "name": "車止め線路B 62mm",
       "source": "https://unitrack.katomodels.com/products/line_single/car_stop",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 62.0,
@@ -4228,7 +4241,7 @@
       "sku": "20-048",
       "name": "車止め線路C 50mm",
       "source": "https://unitrack.katomodels.com/products/line_single/car_stop",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 50.0,
@@ -4267,7 +4280,7 @@
       "sku": "20-060",
       "name": "車止め線路D35mm",
       "source": "https://unitrack.katomodels.com/products/line_single/car_stop",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 35.0,
@@ -4286,7 +4299,7 @@
       "sku": "20-063",
       "name": "車止め線路A66mm(標識灯点灯)",
       "source": "https://unitrack.katomodels.com/products/line_single/car_stop",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 66.0,
@@ -4305,7 +4318,7 @@
       "sku": "20-064",
       "name": "車止め線路C66mm(標識灯点灯仕様)",
       "source": "https://unitrack.katomodels.com/products/line_single/car_stop",
-      "category": "特殊",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 66.0,
@@ -4697,7 +4710,20 @@
       "system": "UNITRACK",
       "label": "X15°",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tCrossing 15d X15L\t20-300"
+      "libraryName": "Kato Unitrack\tCrossing 15d X15L\t20-300",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 186,
+          "unit": "mm"
+        },
+        {
+          "name": "交叉角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-301",
@@ -4788,7 +4814,20 @@
       "system": "UNITRACK",
       "label": "X-15°",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tCrossing 15d X15R\t20-301"
+      "libraryName": "Kato Unitrack\tCrossing 15d X15R\t20-301",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 186,
+          "unit": "mm"
+        },
+        {
+          "name": "交叉角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-320",
@@ -4879,7 +4918,25 @@
       "system": "UNITRACK",
       "label": "X90°",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tCrossing 90d w/o S45.5\t20-320"
+      "libraryName": "Kato Unitrack\tCrossing 90d w/o S45.5\t20-320",
+      "dimensionSpecs": [
+        {
+          "name": "交叉本体",
+          "value": 33,
+          "unit": "mm"
+        },
+        {
+          "name": "附加直轨",
+          "value": 45.5,
+          "unit": "mm"
+        },
+        {
+          "name": "交叉角",
+          "value": 90,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-21-000",
@@ -5323,7 +5380,20 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "自動踏切S基本セット"
+      "label": "自動踏切S基本セット",
+      "dimensionSpecs": [
+        {
+          "name": "套装踏切轨",
+          "value": 124,
+          "unit": "mm"
+        },
+        {
+          "name": "传感器轨",
+          "value": 62,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://www.katomodels.com/unitrackplan/plan/plan06-15_partslist.pdf"
     },
     {
       "id": "KATO-N-21-011",
@@ -5340,7 +5410,15 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "アンカプラーレール"
+      "label": "S124U · 解钩轨",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 124,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://www.e-katomodels2.com/img/goods/2/KATO596712354.pdf"
     },
     {
       "id": "KATO-N-20-202",
@@ -5468,9 +5546,27 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "P718 左",
+      "label": "P718-15 左",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 6-L\t20-202"
+      "libraryName": "Kato Unitrack\tTurnout 6-L\t20-202",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 186,
+          "unit": "mm"
+        },
+        {
+          "name": "半径",
+          "value": 718,
+          "unit": "mm"
+        },
+        {
+          "name": "分岔角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-203",
@@ -5598,9 +5694,27 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "P718 右",
+      "label": "P718-15 右",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 6-R\t20-203"
+      "libraryName": "Kato Unitrack\tTurnout 6-R\t20-203",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 186,
+          "unit": "mm"
+        },
+        {
+          "name": "半径",
+          "value": 718,
+          "unit": "mm"
+        },
+        {
+          "name": "分岔角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-210",
@@ -6095,9 +6209,22 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "渡线 20-210",
+      "label": "WX310 · 双渡线",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tDouble Crossover\t20-210"
+      "libraryName": "Kato Unitrack\tDouble Crossover\t20-210",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 310,
+          "unit": "mm"
+        },
+        {
+          "name": "线间距",
+          "value": 33,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-220",
@@ -6225,9 +6352,22 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "P481 左",
+      "label": "P481-15 左",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 4-L\t20-220"
+      "libraryName": "Kato Unitrack\tTurnout 4-L\t20-220",
+      "dimensionSpecs": [
+        {
+          "name": "半径",
+          "value": 481,
+          "unit": "mm"
+        },
+        {
+          "name": "分岔角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-221",
@@ -6355,9 +6495,22 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "P481 右",
+      "label": "P481-15 右",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 4-R\t20-221"
+      "libraryName": "Kato Unitrack\tTurnout 4-R\t20-221",
+      "dimensionSpecs": [
+        {
+          "name": "半径",
+          "value": 481,
+          "unit": "mm"
+        },
+        {
+          "name": "分岔角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-222",
@@ -6529,9 +6682,22 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "Y 字道岔",
+      "label": "Y481-15 · Y 字道岔",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 2-WYE\t20-222"
+      "libraryName": "Kato Unitrack\tTurnout 2-WYE\t20-222",
+      "dimensionSpecs": [
+        {
+          "name": "半径",
+          "value": 481,
+          "unit": "mm"
+        },
+        {
+          "name": "单侧分岔角",
+          "value": 15,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-230",
@@ -6823,9 +6989,22 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "渡线 20-230",
+      "label": "SX248L · 左渡线",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tDbl Trk Single Crossover (left) 9.75 248mm\t20-230"
+      "libraryName": "Kato Unitrack\tDbl Trk Single Crossover (left) 9.75 248mm\t20-230",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 248,
+          "unit": "mm"
+        },
+        {
+          "name": "线间距",
+          "value": 33,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-231",
@@ -7117,9 +7296,22 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "渡线 20-231",
+      "label": "SX248R · 右渡线",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tDbl Trk Single Crossover (Right) 9.75 248mm\t20-231"
+      "libraryName": "Kato Unitrack\tDbl Trk Single Crossover (Right) 9.75 248mm\t20-231",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 248,
+          "unit": "mm"
+        },
+        {
+          "name": "线间距",
+          "value": 33,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-240",
@@ -7291,9 +7483,27 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "P150 左",
+      "label": "P150-45 左",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 150-R\t20-240"
+      "libraryName": "Kato Unitrack\tTurnout 150-R\t20-240",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 124,
+          "unit": "mm"
+        },
+        {
+          "name": "半径",
+          "value": 150,
+          "unit": "mm"
+        },
+        {
+          "name": "分岔角",
+          "value": 45,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-20-241",
@@ -7465,9 +7675,27 @@
       ],
       "pack": null,
       "system": "UNITRACK",
-      "label": "P150 右",
+      "label": "P150-45 右",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Kato%20Track%20and%20Structures.xtp",
-      "libraryName": "Kato Unitrack\tTurnout 150-L\t20-241"
+      "libraryName": "Kato Unitrack\tTurnout 150-L\t20-241",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 124,
+          "unit": "mm"
+        },
+        {
+          "name": "半径",
+          "value": 150,
+          "unit": "mm"
+        },
+        {
+          "name": "分岔角",
+          "value": 45,
+          "unit": "°"
+        }
+      ],
+      "dimensionSource": "https://katousa.com/wp-content/uploads/2023/12/Unitrack-Catalog-final.pdf"
     },
     {
       "id": "KATO-N-40-212",
@@ -10936,8 +11164,8 @@
       "scale": "N",
       "sku": "1421",
       "name": "エンドレールE(F)",
-      "source": "https://www.tomytec.co.jp/tomix/products/info/?q=1421",
-      "category": "特殊",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/1421.html",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "custom",
         "paths": [
@@ -10975,13 +11203,17 @@
       },
       "status": "library",
       "notes": [
-        "几何来自 XTrackCAD 开源参数库（非厂商认证）；端点按库中独立定义建模。"
+        "几何来自 XTrackCAD 开源参数库（非厂商认证）；端点按库中独立定义建模。",
+        "显示的是现有参数库的走行段尺寸，不是已核实的实物总长；路阻外观为示意。"
       ],
       "pack": null,
       "system": "Fine Track",
-      "label": "E · 50 mm",
+      "label": "E · 钢架路阻",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Tomix%20Track.xtp",
-      "libraryName": "Tomix Fine Track\tBuffer Trk 111mm\t1421"
+      "libraryName": "Tomix Fine Track\tBuffer Trk 111mm\t1421",
+      "bufferStop": {
+        "style": "steel"
+      }
     },
     {
       "id": "TOMIX-N-1423",
@@ -10989,8 +11221,8 @@
       "scale": "N",
       "sku": "1423",
       "name": "エンドレールE(LEDタイプ2)(F)",
-      "source": "https://www.tomytec.co.jp/tomix/products/info/?q=1423",
-      "category": "特殊",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/1423.html",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "custom",
         "paths": [
@@ -11028,13 +11260,17 @@
       },
       "status": "library",
       "notes": [
-        "几何来自 XTrackCAD 开源参数库（非厂商认证）；端点按库中独立定义建模。"
+        "几何来自 XTrackCAD 开源参数库（非厂商认证）；端点按库中独立定义建模。",
+        "显示的是现有参数库的走行段尺寸，不是已核实的实物总长；路阻外观为示意。"
       ],
       "pack": null,
       "system": "Fine Track",
-      "label": "E · 50 mm",
+      "label": "E · LED 路阻",
       "geometrySource": "https://sourceforge.net/p/xtrkcad-fork/xtrkcad/ci/default/tree/app/lib/params/N-Tomix%20Track.xtp",
-      "libraryName": "Tomix Fine Track\tBuffer Trk(LED2) 49mm\t1423"
+      "libraryName": "Tomix Fine Track\tBuffer Trk(LED2) 49mm\t1423",
+      "bufferStop": {
+        "style": "led"
+      }
     },
     {
       "id": "TOMIX-N-1425",
@@ -11042,19 +11278,36 @@
       "scale": "N",
       "sku": "1425",
       "name": "ワイドエンドレールE-WI(F)(2本セット)",
-      "source": "https://www.tomytec.co.jp/tomix/products/info/?q=1425",
-      "category": "特殊",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/1425.html",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
-        "length": 50
+        "length": 40
       },
-      "status": "approximate",
+      "status": "dimensions",
       "notes": [
-        "名义尺寸示意：分岔内部曲线或复合几何尚未逐点核实，施工前请核对原厂图纸。"
+        "官方规格：长 40 mm、宽 37 mm；包装含 2 节，放置和清单按单节统计。"
       ],
       "pack": 2,
       "system": "Fine Track",
-      "label": "E · 50 mm"
+      "label": "E-WI · 宽版路阻",
+      "bufferStop": {
+        "style": "wide"
+      },
+      "appearance": "wide",
+      "dimensionSpecs": [
+        {
+          "name": "长度",
+          "value": 40,
+          "unit": "mm"
+        },
+        {
+          "name": "道床宽",
+          "value": 37,
+          "unit": "mm"
+        }
+      ],
+      "dimensionSource": "https://www.tomytec.co.jp/tomix/products/n/1425.html"
     },
     {
       "id": "TOMIX-N-1428",
@@ -11062,19 +11315,23 @@
       "scale": "N",
       "sku": "1428",
       "name": "エンドPCレールE-PC(LEDタイプ)(F) ",
-      "source": "https://www.tomytec.co.jp/tomix/products/info/?q=1428",
-      "category": "特殊",
+      "source": "https://www.tomytec.co.jp/tomix/products/n/1428.html",
+      "category": "路阻 / 车挡",
       "geometry": {
         "type": "buffer",
         "length": 50
       },
       "status": "approximate",
       "notes": [
-        "名义尺寸示意：分岔内部曲线或复合几何尚未逐点核实，施工前请核对原厂图纸。"
+        "路阻外观为示意；尚未核实官方轨长，当前沿用 50 mm 规划长度，请按实物复核。"
       ],
       "pack": null,
       "system": "Fine Track",
-      "label": "E · 50 mm"
+      "label": "E-PC · PC 枕木 LED 路阻",
+      "bufferStop": {
+        "style": "led"
+      },
+      "appearance": "pc"
     },
     {
       "id": "TOMIX-N-1521",
@@ -16528,9 +16785,9 @@
     }
   ],
   "counts": {
-    "dimensions": 289,
+    "dimensions": 290,
     "library": 46,
-    "approximate": 24,
+    "approximate": 23,
     "pending": 3
   },
   "geometryAttribution": "Additional geometry: XTrackCAD parameter library, Dwyane Ward, Dave Bullis and contributors. GPL-2.0. Converted to mm on 2026-09-26; raw sources and license included.",

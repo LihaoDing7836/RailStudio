@@ -1,6 +1,6 @@
 import * as THREE from './lib/three/three.module.js';
-import {sceneConfig,aircraftPlan,roadEdges,sceneryOrder} from './scenery-geometry.js?v=6e996b231fc003be';
-import {sceneArtwork} from './scenery.js?v=6e996b231fc003be';
+import {sceneConfig,aircraftPlan,roadEdges,sceneryOrder} from './scenery-geometry.js?v=163a119ad935399b';
+import {sceneArtwork} from './scenery.js?v=163a119ad935399b';
 export function createScenery3D(part,piece){
  const group=new THREE.Group(),c=sceneConfig(part,piece),material=color=>new THREE.MeshStandardMaterial({color,roughness:.65,side:THREE.DoubleSide});
  const mesh=(geo,color,x=0,y=0,z=0)=>{const m=new THREE.Mesh(geo,material(color));m.position.set(x,y,z);group.add(m);return m;};

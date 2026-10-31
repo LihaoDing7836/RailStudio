@@ -1,5 +1,5 @@
-import {layoutConnections} from './closures.js?v=6e996b231fc003be';
-import {bounds,connections,compatible,norm,rad} from './geometry.js?v=6e996b231fc003be';
+import {layoutConnections} from './closures.js?v=163a119ad935399b';
+import {bounds,connections,compatible,norm,rad} from './geometry.js?v=163a119ad935399b';
 
 export function selectionCenter(pieces,byId){const b=bounds(pieces,byId);return b?{x:(b.minX+b.maxX)/2,y:(b.minY+b.maxY)/2}:null;}
 export function rotatePieces(pieces,center,degrees){

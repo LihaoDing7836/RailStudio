@@ -1,4 +1,4 @@
-import {validateOutline} from './board.js?v=6e996b231fc003be';
+import {validateOutline} from './board.js?v=163a119ad935399b';
 // Model-space millimetres. Scenic objects never expose railway connectors.
 export const isScenery=part=>part?.kind==='aircraft'||part?.kind==='scenery';
 export const isTrack=part=>!part?.kind||part.kind==='track';

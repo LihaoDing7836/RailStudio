@@ -32,3 +32,5 @@
 #scene-color{min-height:32px;padding:3px;width:100%}
 
 .brands button{letter-spacing:0;padding:9px 5px;white-space:nowrap}#plarail-note{margin:0 20px 12px;font-size:11px;line-height:1.65;color:#64798c}#plarail-note[hidden]{display:none}
+
+.part-card .part-dimensions{white-space:normal;line-height:1.5;color:#466d5b;font-size:11px;margin-top:4px}.specs{flex-wrap:wrap}.specs>span{min-width:130px}

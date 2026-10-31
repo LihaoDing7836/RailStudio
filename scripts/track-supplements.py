@@ -34,6 +34,7 @@ def apply(parts):
    p['notes']=['设计器按双端可接 KATO / TOMIX 的转接件处理；实物须按厂家说明更换接头、核对道床与接口，软件兼容不代表免改装直连。']
  import runpy
  runpy.run_path(str(Path(__file__).with_name('plarail-and-curved-turnouts.py')))['apply'](parts)
+ runpy.run_path(str(Path(__file__).with_name('track-detail-supplements.py')))['apply'](parts)
  return parts
 
 if __name__=='__main__':

@@ -1,6 +1,7 @@
-import {trackStyle} from './track-style.js?v=6e996b231fc003be';
-import {isTrack} from './scenery-geometry.js?v=6e996b231fc003be';
-import {worldGeometry} from './geometry.js?v=6e996b231fc003be';
+import {trackDimensionLabel} from './track-dimensions.js?v=163a119ad935399b';
+import {trackStyle} from './track-style.js?v=163a119ad935399b';
+import {isTrack} from './scenery-geometry.js?v=163a119ad935399b';
+import {worldGeometry} from './geometry.js?v=163a119ad935399b';
 
 const number=n=>Number(n.toFixed(1)).toString();
 const escape=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -13,9 +14,11 @@ function baseSpecification(part,piece){
  if(g.type==='flex')return `柔性轨 ${number(L)}mm / ${number(piece.bend||0)}°`;
  if(g.type==='straight')return `S${number(L)}`;
  if(g.type==='doubleStraight')return `DS${number(L)}`;
- if(g.type==='buffer')return `车挡 S${number(L)}`;
+ if(part.bufferStop)return part.label;
+ if(g.type==='buffer')return `路阻 S${number(L)}`;
  if(g.type==='turntable')return `转盘 ${number(L)}mm`;
  // Catalog labels carry the model's geometry description, not its sales SKU.
+ if(part.brand==='KATO'&&g.type==='custom')return `${part.label} · ${trackDimensionLabel(part,piece)}`;
  const label=part.label.replace(/^電動3方ポイント/,'三开道岔 ').replace(/^電動ポイント/,'道岔 ');
  if(part.category==='道岔'&&!label.includes('道岔'))return `道岔 ${label}`;
  return label;
@@ -38,7 +41,7 @@ function anchorOnTrack(points){
 
 export function layoutTrackLabels(pieces,byId,{unit=1,viewport=null}={}){
  return pieces.filter(piece=>isTrack(byId[piece.partId])).flatMap(piece=>{
-  const part=byId[piece.partId],points=worldGeometry(part,piece).paths[0]?.points;if(!points?.length)return [];
+  const part=byId[piece.partId],paths=worldGeometry(part,piece).paths,points=paths.reduce((best,p)=>!best||p.length>best.length?p:best,null)?.points;if(!points?.length)return [];
   const anchor=anchorOnTrack(points);
   if(viewport&&(anchor.x<viewport.x||anchor.y<viewport.y||anchor.x>viewport.x+viewport.w||anchor.y>viewport.y+viewport.h))return [];
   return [{anchor,text:trackSpecification(part,piece),pieceId:piece.id,brand:part.brand,approximate:part.status==='approximate',unit}];

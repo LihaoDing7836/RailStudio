@@ -1,5 +1,6 @@
+import {bufferStopMarkup} from './buffer-stop.js?v=163a119ad935399b';
 // Appearance widths are drawing conventions, not manufacturer clearance envelopes.
-import {pathData} from './geometry.js?v=6e996b231fc003be';
+import {pathData} from './geometry.js?v=163a119ad935399b';
 export function trackStyle(part){
  const n=(part.name||'')+' '+(part.label||''),gauge=part.brand==='PLARAIL'?26:part.scale==='HO'?16.5:9;
  const type=part.appearance||(/築堤|\bEM\b/.test(n)?'embankment':/スラブ|スラブ|SL/.test(n)?'slab':/鉄橋|トラス|ガーダー/.test(n)?'bridge':/高架/.test(n)?'viaduct':/ワイド|-WP|－WP/.test(n)?'wide':/トラム|-WT/.test(n)?'tram':/PC|コンクリート/.test(n)?'pc':'standard');
@@ -19,5 +20,6 @@ export function trackSurfaceMarkup(part,paths,selected=false){const v=trackStyle
  }
  if(!['tram','slab'].includes(v.type))for(const path of paths){let traveled=0,next=0;for(let i=1;i<path.points.length;i++){const a=path.points[i-1],b=path.points[i],L=Math.hypot(b.x-a.x,b.y-a.y);if(!L)continue;for(;next<=traveled+L;next+=7){const f=(next-traveled)/L,x=a.x+(b.x-a.x)*f,y=a.y+(b.y-a.y)*f,dx=(b.x-a.x)/L,dy=(b.y-a.y)/L,h=v.gauge/2+3;out+=stroke([{x:x-dy*h,y:y+dx*h},{x:x+dy*h,y:y-dx*h}],v.tie,2.5);}traveled+=L;}}
  for(const p of paths)for(const d of [-v.gauge/2,v.gauge/2])out+=stroke(offsetTrack(p.points,d),v.rail,1.8);
+ out+=bufferStopMarkup(part,paths);
  return `<g data-track-style="${v.type}">${out}</g>`;
 }

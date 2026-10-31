@@ -1,20 +1,23 @@
-import {embankmentMesh} from './embankment.js?v=6e996b231fc003be';
-import {trackStyle} from './track-style.js?v=6e996b231fc003be';
-import {isScenery} from './scenery-geometry.js?v=6e996b231fc003be';
-import {createScenery3D} from './scenery3d.js?v=6e996b231fc003be';
-import {layoutConnections} from './closures.js?v=6e996b231fc003be';
+import {bufferStopPose} from './buffer-stop.js?v=163a119ad935399b';
+import {createTrainCar,disposeTrainModel} from './train-models.js?v=163a119ad935399b';
+import {embankmentMesh} from './embankment.js?v=163a119ad935399b';
+import {trackStyle} from './track-style.js?v=163a119ad935399b';
+import {isScenery} from './scenery-geometry.js?v=163a119ad935399b';
+import {createScenery3D} from './scenery3d.js?v=163a119ad935399b';
+import {layoutConnections} from './closures.js?v=163a119ad935399b';
 import * as THREE from './lib/three/three.module.js';
 import {OrbitControls} from './lib/three/OrbitControls.js';
-import {boardOutline} from './board.js?v=6e996b231fc003be';
-import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=6e996b231fc003be';
-import {elevatedPaths} from './elevation.js?v=6e996b231fc003be';
-import {worldGeometry} from './geometry.js?v=6e996b231fc003be';
-import {buildingSize} from './buildings.js?v=6e996b231fc003be';
+import {boardOutline} from './board.js?v=163a119ad935399b';
+import {terrainHeight,worldSlopeGradient,layerVisible} from './elevation-schema.js?v=163a119ad935399b';
+import {elevatedPaths} from './elevation.js?v=163a119ad935399b';
+import {worldGeometry} from './geometry.js?v=163a119ad935399b';
+import {buildingSize} from './buildings.js?v=163a119ad935399b';
 export function createViewer(host,status){
  const renderer=new THREE.WebGLRenderer({antialias:true,alpha:false});renderer.setPixelRatio(Math.min(devicePixelRatio,2));renderer.setClearColor('#e9eee9');renderer.outputColorSpace=THREE.SRGBColorSpace;renderer.toneMapping=THREE.ACESFilmicToneMapping;renderer.toneMappingExposure=1;host.appendChild(renderer.domElement);renderer.domElement.setAttribute('aria-label','沙盘 3D 视图：拖动旋转，滚轮缩放，右键平移');renderer.domElement.tabIndex=0;
  const scene=new THREE.Scene(),camera=new THREE.PerspectiveCamera(38,1,1,2000000),controls=new OrbitControls(camera,renderer.domElement);controls.enableDamping=false;controls.maxPolarAngle=Math.PI*.86;controls.screenSpacePanning=true;
  scene.add(new THREE.HemisphereLight('#ffffff','#7e8975',1.7));const light=new THREE.DirectionalLight('#fff7e8',1.8);light.position.set(-400,1200,800);scene.add(light);
  let terrainMeshes=[],cutaway=false,group=new THREE.Group(),key='',project,extent=1800,center=new THREE.Vector3();scene.add(group);
+ let trainRoot=new THREE.Group(),trainKey='',followPoint=null,trainPoses=[];scene.add(trainRoot);
  const draw=()=>{const near=Math.max(.1,Math.min(extent/100,camera.position.distanceTo(controls.target)/100));if(camera.near!==near){camera.near=near;camera.updateProjectionMatrix();}renderer.render(scene,camera);};controls.addEventListener('change',draw);
  renderer.domElement.addEventListener('webglcontextlost',e=>{e.preventDefault();status('3D 显示已中断；方案仍然保留，请返回 2D 并刷新页面恢复。');});
  const resize=()=>{const w=host.clientWidth,h=host.clientHeight;if(w&&h){renderer.setSize(w,h);camera.aspect=w/h;camera.updateProjectionMatrix();draw();}};const observer=new ResizeObserver(resize);observer.observe(host);
@@ -36,6 +39,15 @@ export function createViewer(host,status){
     const routes=paired?[paths[0].points.map((a,i)=>{const b=paths[1].points[i];return b?{x:(a.x+b.x)/2,y:(a.y+b.y)/2,z:(a.z+b.z)/2}:a;})]:paths.map(path=>path.points);
     for(const route of routes){const berm=embankmentMesh(route,{topWidth:paired?28+spacing:28,shoulder:20,ground:(x,y)=>terrainHeight(terrain,x,y)});mesh(berm.faces,'#899779');if(berm.seams.length){const geometry=new THREE.BufferGeometry();geometry.setAttribute('position',new THREE.Float32BufferAttribute(berm.seams,3));group.add(new THREE.LineSegments(geometry,new THREE.LineBasicMaterial({color:'#64715f'})));}}
    }
+   const stop=bufferStopPose(part,worldGeometry(part,q).paths);
+   if(stop){const root=new THREE.Group();root.name='buffer-stop';root.position.set(stop.x,stop.z+3,stop.y);root.rotation.y=-stop.angle;
+    const dark=new THREE.MeshStandardMaterial({color:'#4d5457'}),bar=new THREE.MeshStandardMaterial({color:'#b46f4e'}),half=stop.style==='wide'?13:8;
+    const block=(x,y,z,l,h,w,mat)=>{const m=new THREE.Mesh(new THREE.BoxGeometry(l,h,w),mat);m.position.set(x,y,z);root.add(m);};
+    for(const side of [-1,1]){block(-2,4,side*(half-2),2,8,2,dark);block(-5,1,side*(half-2),9,2,2,dark);}
+    block(-1,7,0,2.5,2.5,half*2+2,bar);
+    if(stop.style==='led'){const m=new THREE.Mesh(new THREE.SphereGeometry(1.5,8,6),new THREE.MeshStandardMaterial({color:'#ffe793',emissive:'#ffd466',emissiveIntensity:.7}));m.position.set(-3,9,0);root.add(m);}
+    group.add(root);
+   }
    trackCount++;const gradient=worldSlopeGradient(q),gauge=style.gauge;for(const path of elevatedPaths(part,q,25)){const pts=path.points;ribbon(bucket.bed,pts,style.type==='embankment'?28:style.width,0,1,gradient);if(style.type==='embankment')ribbon(bucket.inner,pts,gauge+16,0,1.5,gradient);if(['wide','viaduct','bridge','adapter','plarailElevated'].includes(style.type))for(const side of [-1,1])ribbon(bucket.edge,pts,style.type==='wide'?1.4:2.5,side*(style.width/2-2),style.type==='viaduct'||style.type==='bridge'?6:1.6,gradient);for(const side of [-1,1])ribbon(part.brand==='PLARAIL'?bucket.grooves:rails,pts,part.brand==='PLARAIL'?3.5:1.6,side*gauge/2,3,gradient);let traveled=0,nextTie=0,nextPier=70;
     for(let i=1;i<pts.length;i++){const a=pts[i-1],b=pts[i],length=Math.hypot(b.x-a.x,b.y-a.y);if(!length)continue;const nx=-(b.y-a.y)/length,ny=(b.x-a.x)/length;
      for(;nextTie<=traveled+length;nextTie+=p.pieces.length>800?24:9){const f=(nextTie-traveled)/length,x=a.x+(b.x-a.x)*f,y=a.y+(b.y-a.y)*f,z=a.z+(b.z-a.z)*f;const half=gauge/2+3,crossRise=(gradient.x*nx+gradient.y*ny)*half;if(style.type!=='tram')ribbon(bucket.ties,[{x:x-nx*half,y:y-ny*half,z:z-crossRise},{x:x+nx*half,y:y+ny*half,z:z+crossRise}],2.4,0,2,gradient);}
@@ -49,7 +61,22 @@ export function createViewer(host,status){
   for(const b of trackBuckets.values()){mesh(b.bed,b.style.bed);mesh(b.grooves,b.style.rail);mesh(b.inner,'#c9c1ae');mesh(b.ties,b.style.tie);mesh(b.edge,b.style.type==='wide'?'#edf5f7':b.style.type==='adapter'?'#ae783b':'#6e8585');}mesh(beds,'#b8b8a9');mesh(ties,'#707c70');mesh(rails,'#4c615b',.32);mesh(supports,'#c4c7bb');mesh(houses,'#ede7d8');mesh(roofs,'#6b817e');
   let terrainMax=0,terrainMin=0;for(let i=1;i<land.length;i+=3){terrainMax=Math.max(terrainMax,land[i]);terrainMin=Math.min(terrainMin,land[i]);}const maxHeight=Math.max(terrainMax,...p.pieces.map(q=>Math.max(q.z||0,q.zEnd||0)),...terrain.map(t=>t.height)),minHeight=Math.min(terrainMin,...p.pieces.map(q=>Math.min(q.z||0,q.zEnd||0)));extent=Math.max(p.board.width,p.board.height,maxHeight-minHeight,200);center.set(p.board.width/2,(maxHeight+minHeight)/2,p.board.height/2);camera.near=Math.max(.1,extent/1000);camera.far=extent*40;camera.updateProjectionMatrix();controls.minDistance=10;controls.maxDistance=extent*15;xray(cutaway);draw();
  }
+ // Moving stock lives outside the static layout mesh; frames only update transforms.
+ function clearTrain(){disposeTrainModel(trainRoot);scene.remove(trainRoot);trainRoot=new THREE.Group();scene.add(trainRoot);trainKey='';followPoint=null;trainPoses=[];draw();}
+ function setTrain({modelId,poses,scale=1,gauge=9,follow=false}){
+  const next=modelId+':'+poses.length+':'+scale+':'+gauge;
+  if(next!==trainKey){clearTrain();trainKey=next;for(let i=0;i<poses.length;i++)trainRoot.add(createTrainCar(modelId,{index:i,count:poses.length,scale,gauge}));}
+  trainPoses=poses;
+  for(let i=0;i<poses.length;i++){const pose=poses[i],car=trainRoot.children[i],x=new THREE.Vector3(pose.tangent.x,pose.tangent.z,pose.tangent.y).normalize(),z=new THREE.Vector3().crossVectors(x,new THREE.Vector3(0,1,0)).normalize(),y=new THREE.Vector3().crossVectors(z,x).normalize();car.position.set(pose.x,pose.z+3,pose.y);car.quaternion.setFromRotationMatrix(new THREE.Matrix4().makeBasis(x,y,z));}
+  if(follow&&poses.length){const head=poses[0],point=new THREE.Vector3(head.x,head.z+20,head.y);if(followPoint){const shift=point.clone().sub(followPoint);camera.position.add(shift);controls.target.add(shift);}followPoint=point;}else followPoint=null;
+  if(!host.hidden)draw();
+ }
+ function focusTrain({detail=false}={}){if(!trainPoses.length)return;trainRoot.updateMatrixWorld(true);const subject=detail?trainRoot.children[0]:trainRoot,box=new THREE.Box3().setFromObject(subject),size=box.getSize(new THREE.Vector3()),target=box.getCenter(new THREE.Vector3());let span=Math.max(size.x,size.z,size.y,120),direction=new THREE.Vector3(.75,.65,1).normalize();
+  if(detail){span=subject.userData.carLength*.75;target.copy(subject.localToWorld(new THREE.Vector3(subject.userData.carLength/(subject.scale.x||1)*.23,8,0)));direction.set(.7,.3,1).applyQuaternion(subject.quaternion).normalize();}
+  const distance=span/(2*Math.tan(THREE.MathUtils.degToRad(camera.fov/2)))*1.35/Math.min(1,camera.aspect);controls.target.copy(target);camera.position.copy(target).addScaledVector(direction,distance);controls.update();draw();}
+
+
  function preset(name){if(!project)return;controls.target.copy(center);const scale=extent*.82*Math.max(1,1/Math.max(camera.aspect,.3));const delta=name==='top'?new THREE.Vector3(0,1.8,.001):name==='front'?new THREE.Vector3(0,.12,1.9):new THREE.Vector3(1.1,1.15,1.35);camera.position.copy(center).addScaledVector(delta,scale);controls.update();draw();}
  function xray(on){cutaway=on;for(const m of terrainMeshes){if(!m)continue;m.material.transparent=on;m.material.opacity=on?.18:1;m.material.depthWrite=!on;m.material.needsUpdate=true;}draw();}
- return {update,preset,resize,xray,dispose(){observer.disconnect();controls.dispose();renderer.dispose();renderer.domElement.remove();}};
+ return {update,preset,resize,xray,setTrain,clearTrain,focusTrain,dispose(){disposeTrainModel(trainRoot);observer.disconnect();controls.dispose();renderer.dispose();renderer.domElement.remove();}};
 }
